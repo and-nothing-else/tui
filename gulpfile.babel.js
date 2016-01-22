@@ -114,6 +114,7 @@ gulp.task('watch', () => {
         gulp.watch(`${dirs.src}/**/*.{js,jsx}`, ['compile']);
         gulp.watch(`${dirs.src}/**/*.{sass,scss}`, ['sass']);
     });
+    livereload();
 });
 
 
