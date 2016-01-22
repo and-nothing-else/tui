@@ -135,6 +135,9 @@ $container-max-widths: (
 //xl: 1140px
 ) !default;
 
+$content-width: 1141px;
+$nav-height: 70px;
+
 
 // Grid columns
 //
@@ -215,7 +218,7 @@ $line-height-lg:         (4 / 3) !default;
 $line-height-sm:         1.5 !default;
 
 $border-radius:          .25rem !default;
-$border-radius-lg:       .3rem !default;
+$border-radius-lg:       8px !default;
 $border-radius-sm:       .2rem !default;
 
 $component-active-color: #fff !default;

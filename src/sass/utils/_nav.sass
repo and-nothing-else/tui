@@ -1,0 +1,33 @@
+@import "../base/bootstrap"
+
+%nav-panel
+  height: $nav-height
+  border: $border-width solid white
+  line-height: $nav-height
+  +gradient-vertical(white, #efefef)
+  font:
+    size: 18px
+    weight: bold
+  & > *
+    white-space: nowrap
+    +make-col()
+    height: 100%
+    color: $body-color
+    position: relative
+    &:hover
+      +gradient-vertical(darken(white, 10%), darken(#efefef, 15%))
+      @extend %link-immutable
+
+    &:not(:first-child)
+      &:before
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        left: 0
+        +size($border-width, 100%)
+        +gradient-vertical(#e5e5e5, #d7d7d7)
+    &:not(:last-child)
+      border-right: $border-width solid white
+
+

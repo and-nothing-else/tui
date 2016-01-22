@@ -21,6 +21,7 @@
     &_link
       @extend .btn-link
       color: white
+      @extend %link-immutable
       padding: 0 0 0 41px
       border: 0
       line-height: 20px
@@ -37,8 +38,6 @@
         border-bottom: 2px dotted rgba(255,255,255,1)
         +transition(border-bottom-color $transition-duration-hover ease)
       &:hover
-        text-decoration: none
-        color: white
         &:after
           border-bottom-color: rgba(255,255,255,0)
     &.phone &_link:before
