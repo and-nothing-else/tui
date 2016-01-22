@@ -4,7 +4,7 @@
   +gradient-vertical(white, #eee)
   +box-shadow($shadow-color 0 5px 35px)
   @extend .center-block
-  padding: 28px 28px 33px
+  padding: 28px
   &__groups
     +make-row($grid-gutter-width)
   &__group
@@ -13,4 +13,18 @@
   label
     display: block
     font-weight: bold
+    margin-bottom: 4px
+  input[type=text], select, .select2-selection--single
+    padding: $input-padding-y-lg $input-padding-x-lg
+    background: $gray-lighter
+    border-color: white
+    color: $gray-dark
+    +box-shadow(inset rgba(0,0,0,.2) 0 0 5px)
+
+  .select2-selection--single .select2-selection__arrow
+    width: 31px
+    b
+      +size(20px, 14px)
+      margin: -7px 0 0
+      background: url("/src/data-images/select2-arrow--form-panel.png")
 

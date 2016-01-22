@@ -1,0 +1,6 @@
+input[type=text],
+select {
+  @extend .form-control;
+}
+
+@import "select2/core";
