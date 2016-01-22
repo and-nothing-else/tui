@@ -29,7 +29,7 @@ const
         vendor: {
         },
         source: {
-            templates: `${dirs.src}/**/*.jade`,
+            templates: `${dirs.src}/*.jade`,
             script: `${dirs.src}/scripts/script.js`,
             style: `${dirs.src}/sass/style.sass`
         },
@@ -110,7 +110,7 @@ gulp.task('watch', () => {
             return console.log(err);
         }
         gulp.watch(`${dirs.src_images}/**/*.*`, ['copy']);
-        gulp.watch(`${dirs.src}/**/*.jade`, ['jade']);
+        gulp.watch(`${dirs.src}/*.jade`, ['jade']);
         gulp.watch(`${dirs.src}/**/*.{js,jsx}`, ['compile']);
         gulp.watch(`${dirs.src}/**/*.{sass,scss}`, ['sass']);
     });

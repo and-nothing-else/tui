@@ -1,0 +1,16 @@
+.form_panel
+  border: $border-width solid white
+  +border-radius($border-radius-lg)
+  +gradient-vertical(white, #eee)
+  +box-shadow($shadow-color 0 5px 35px)
+  @extend .center-block
+  padding: 28px 28px 33px
+  &__groups
+    +make-row($grid-gutter-width)
+  &__group
+    +make-col($grid-gutter-width)
+
+  label
+    display: block
+    font-weight: bold
+

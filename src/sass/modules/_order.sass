@@ -1,0 +1,25 @@
+$order-form-gutter: 6px
+
+
+.order_form
+  .form_panel
+    width: 1049px
+    margin-top: -84px
+    margin-bottom: 75px
+    &__groups
+      +make-row($order-form-gutter)
+    &__group
+      +make-col($order-form-gutter)
+      &.from
+        width: 164px
+      &.to
+        width: 154px
+      &.dates
+        width: 216px
+      &.duration
+        width: 90px
+      &.persons
+        width: 160px
+      &.submit
+        padding-left: 16px
+        padding-top: 23px
