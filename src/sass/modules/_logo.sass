@@ -1,0 +1,13 @@
+@import "../utils/index"
+
+@mixin logo($color: $brand-primary, $fontSize: 18px)
+  display: inline-block
+  color: $color
+  font:
+    size: $fontSize
+    weight: bold
+  img
+    display: block
+
+.logo
+  @include logo()
