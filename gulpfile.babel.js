@@ -22,6 +22,7 @@ const
     dirs = {
         npm: './node_modules',
         src: './src',
+        src_images: './src/images',
         dest: './dist'
     },
     files = {
@@ -35,6 +36,7 @@ const
         dest: {
             vendor: `${dirs.dest}/vendor`,
             scripts: `${dirs.dest}/scripts`,
+            images: `${dirs.dest}/images`,
             styles: `${dirs.dest}/styles`
         }
     },
@@ -51,6 +53,12 @@ gulp.task('clean', () => {
     }
 });
 
+
+gulp.task('copy', () => {
+    gulp.src(`${dirs.src_images}/**/*.*`)
+        .pipe(gulp.dest(files.dest.images))
+        .pipe(production ? gutil.noop() : livereload());
+});
 
 gulp.task('jade', () => {
     gulp.src(files.source.templates)
@@ -73,7 +81,8 @@ gulp.task('sass', () => {
         }))
         .pipe(production ? minifyCSS({compatibility: 'ie8'}) : gutil.noop())
         .pipe(production ? gutil.noop() : sourcemaps.write())
-        .pipe(gulp.dest(files.dest.styles));
+        .pipe(gulp.dest(files.dest.styles))
+        .pipe(production ? gutil.noop() : livereload());
 });
 
 gulp.task('compile', () => {
@@ -100,6 +109,7 @@ gulp.task('watch', () => {
         if (err) {
             return console.log(err);
         }
+        gulp.watch(`${dirs.src_images}/**/*.*`, ['copy']);
         gulp.watch(`${dirs.src}/**/*.jade`, ['jade']);
         gulp.watch(`${dirs.src}/**/*.{js,jsx}`, ['compile']);
         gulp.watch(`${dirs.src}/**/*.{sass,scss}`, ['sass']);
@@ -107,7 +117,7 @@ gulp.task('watch', () => {
 });
 
 
-let task_pool = ['jade', 'sass', 'compile'];
+let task_pool = ['copy', 'jade', 'sass', 'compile'];
 if(gutil.env.type !== 'production') {
     task_pool.push('watch');
 }

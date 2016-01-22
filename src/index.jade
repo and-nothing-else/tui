@@ -3,6 +3,16 @@ html(lang="ru")
     head
         title TUI
         script(type='text/javascript', src='/scripts/script.js')
+        link(href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic', rel='stylesheet')
         link(rel="stylesheet", href="/styles/style.css")
     body
-        h1 TUI
+        .layout
+            .layout__header
+                .logo
+                    img(src='/images/logo.png')
+                    | туры от туроператора TUI
+            .layout__main
+            .layout__footer
+                .logo
+                    img(src='/images/logo_secondary.png')
+                    | туры от туроператора TUI
