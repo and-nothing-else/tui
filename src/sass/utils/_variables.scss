@@ -49,8 +49,8 @@ $shadow-color: rgba(0,0,0,.3);
 
 $enable-flex:               false !default;
 $enable-rounded:            true !default;
-$enable-shadows:            false !default;
-$enable-gradients:          false !default;
+$enable-shadows:            true !default;
+$enable-gradients:          true !default;
 $enable-transitions:        true !default;
 $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
@@ -84,7 +84,7 @@ x:   ($spacer-x * 3),
 y:   ($spacer-y * 3)
 )
 ) !default;
-$border-width:               1px !default;
+$border-width:               2px !default;
 
 
 // Body
@@ -251,7 +251,7 @@ $btn-font-weight:                normal !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             $btn-primary-bg !default;
+$btn-primary-border:             #e65c5c !default;
 
 $btn-secondary-color:            $gray-dark !default;
 $btn-secondary-bg:               #fff !default;
