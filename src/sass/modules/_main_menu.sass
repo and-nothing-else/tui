@@ -3,6 +3,15 @@
   width: $content-width
   +border-top-radius($border-radius-lg)
   display: table
+  line-height: 1
   & > *
     display: table-cell
     float: none
+    vertical-align: middle
+    padding-top: 4px
+    width: 1px
+    &:first-child, &:last-child
+      width: auto
+    &:first-child
+      text-align: right
+
