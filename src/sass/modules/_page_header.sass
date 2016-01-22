@@ -1,36 +1,36 @@
 .page_header
   @extend .clearfix
   &__logo
-    +pull-left()
+    +make-col()
   &__cblock
     +pull-right()
     +make-col()
-    padding-top: 30px
+    padding-top: 27px
     color: white
     text:
       shadow: $shadow-color 0 1px 1px
       align: center
     &_pre
-      margin-top: -12px
-      line-height: 12px
+      margin-top: -10px
+      line-height: 10px
       font-size: 14px
     &_info
       font:
         size: 28px
         weight: bold
-      line-height: 40px
     &_link
       @extend .btn-link
       color: white
-      padding: 0 0 0 36px
+      padding: 0 0 0 41px
       border: 0
       line-height: 20px
+      letter-spacing: 1.2px
       &:before
         content: ''
         display: block
         +size(30px)
         +pull-left()
-        margin: 0 0 0 -36px
+        margin: -4px 0 0 -38px
       &:after
         content: ''
         display: block
@@ -42,9 +42,12 @@
         &:after
           border-bottom-color: rgba(255,255,255,0)
     &.phone &_link:before
-      background: url("/src/data-images/icon_phone.png") center no-repeat
-    &.where &_link:before
-      background: url("/src/data-images/icon_where.png") center top no-repeat
+      background: url("/src/data-images/icon_phone.png") 5px 3px no-repeat
+    &.where &_link
+      padding-left: 21px
+      &:before
+        background: url("/src/data-images/icon_where.png") 11px 0 no-repeat
     &.get_tour
       padding-top: 32px
+      margin-right: 20px
 

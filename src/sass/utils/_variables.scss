@@ -53,7 +53,7 @@ $enable-shadows:            true !default;
 $enable-gradients:          true !default;
 $enable-transitions:        true !default;
 $enable-hover-media-query:  false !default;
-$enable-grid-classes:       true !default;
+$enable-grid-classes:       false !default;
 
 
 $transition-duration-hover: .1s;
@@ -114,13 +114,13 @@ $grid-breakpoints: (
 // Extra small screen / phone
 xs: 0,
 // Small screen / phone
-sm: 544px,
+//sm: 544px,
 // Medium screen / tablet
-md: 768px,
+//md: 768px,
 // Large screen / desktop
-lg: 992px,
+//lg: 992px,
 // Extra large screen / wide desktop
-xl: 1200px
+//xl: 1200px
 ) !default;
 
 
@@ -129,10 +129,10 @@ xl: 1200px
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-sm: 576px,
-md: 720px,
-lg: 940px,
-xl: 1140px
+//sm: 576px,
+//md: 720px,
+//lg: 940px,
+//xl: 1140px
 ) !default;
 
 
