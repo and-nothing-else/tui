@@ -20,6 +20,33 @@ $order-form-gutter: 6px
         width: 90px
       &.persons
         width: 160px
+        label
+          span:last-child
+            float: right
       &.submit
         padding-left: 16px
         padding-top: 23px
+
+.input_group
+  @extend .clearfix
+  @extend %form_panel__widget
+  padding: 0
+  &__item
+    float: left
+    width: 50%
+    position: relative
+    &:not(:first-child)
+      &:before
+        content: ''
+        display: block
+        +size(0, 26px)
+        border-left: $border-width dotted #ccc
+        top: 10px
+        left: 0
+        position: absolute
+
+  .select2-selection--single
+    padding-left: 16px!important
+    border: 0!important
+    background: transparent!important
+    box-shadow: none!important

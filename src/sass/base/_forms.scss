@@ -1,6 +1,9 @@
 input[type=text],
-select {
+select,
+.input_group
+{
   @extend .form-control;
 }
 
 @import "select2/core";
+

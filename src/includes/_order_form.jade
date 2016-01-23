@@ -24,15 +24,20 @@ section.order_form
                     option(selected) 14
                     option 28
             .form_panel__group.persons
-                label Взрослых: Детей:
-                select
-                    option 1
-                    option(selected) 2
-                    option 3
-                select
-                    option(selected) 0
-                    option 1
-                    option 2
-                    option 3
+                label
+                    span Взрослых:
+                    span Детей:
+                .input_group
+                    .input_group__item
+                        select
+                            option 1
+                            option(selected) 2
+                            option 3
+                    .input_group__item
+                        select
+                            option(selected) 0
+                            option 1
+                            option 2
+                            option 3
             .form_panel__group.submit
                 button.primary_button.start_order Оставить заявку

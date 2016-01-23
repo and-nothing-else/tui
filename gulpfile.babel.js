@@ -116,7 +116,7 @@ gulp.task('watch', () => {
             return console.log(err);
         }
         gulp.watch(`${dirs.src_images}/**/*.*`, ['copy']);
-        gulp.watch(`${dirs.src}/*.jade`, ['jade']);
+        gulp.watch(`${dirs.src}/**/*.jade`, ['jade']);
         gulp.watch(`${dirs.src}/**/*.{js,jsx}`, ['compile']);
         gulp.watch(`${dirs.src}/**/*.{sass,scss}`, ['sass']);
     });
