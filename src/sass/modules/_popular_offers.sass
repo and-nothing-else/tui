@@ -1,0 +1,44 @@
+$popular-offers-grid-columns: 4
+$popular-offers-gutter: 20px
+$popular-offers-tile-height: 250px
+
+
+.popular_offers
+  padding: 75px 0 0
+  h2
+    text-align: center
+    margin-bottom: 38px
+  &__menu
+    @extend %nav-panel
+    display: table
+    margin: 0 auto 31px
+    +box-shadow($shadow-color 0 5px 20px)
+    +border-radius($border-radius-lg)
+    overflow: hidden
+  &__content
+    padding: 0 $grid-gutter-width /2
+  &__grid
+    +make-row($popular-offers-gutter)
+    &_tile
+      +make-col($popular-offers-gutter)
+      +make-col-span(1, $popular-offers-grid-columns)
+      height: $popular-offers-tile-height
+      margin-bottom: $popular-offers-gutter
+      &.double
+        +make-col-span(2, $popular-offers-grid-columns)
+      &.vertical
+        height: $popular-offers-tile-height*2 + $popular-offers-gutter
+      &.right
+        +pull-right()
+      &_content
+        position: relative
+        height: 100%
+        +border-radius($border-radius)
+        overflow: hidden
+        +transition(box-shadow $transition-duration-hover ease)
+        cursor: pointer
+        &:hover
+          +box-shadow($shadow-color 0 2px 16px)
+
+        &_bg
+          @extend %full-size

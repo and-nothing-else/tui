@@ -24,7 +24,7 @@ html(lang="ru")
                     nav.main_menu.layout__main_header_nav
                         a(href="#best_offers") Лучшие предложения
                         a(href="#excellence") Преимущества TUI
-                        a(href="#states") Популярные страны
+                        a(href="#popular") Популярные страны
                         a(href="#reviews") Отзывы клиентов
                         a(href="#search") Поиск тура
                         a(href="#where2buy") Где купить тур
@@ -34,6 +34,7 @@ html(lang="ru")
                             br
                             | от TUI TOUR
                     include ./includes/_order_form
+
                 section.layout__main_content.section_offers
                     article
                         h2 Лучшие предложения
@@ -44,6 +45,9 @@ html(lang="ru")
                         h2 Почему выбирают Tui
                         p 40 лет опыта успешной работы – весьма серьезная рекомендация для туроператора, а для туроператора TUI Travel - далеко не единственная.
                     include ./includes/_slider
+                section.section_popular
+                    include ./includes/_popular
+
                 .layout__main_footer
                     | © 2015 Точка продаж TUI
             .layout__footer.page_footer
