@@ -1,7 +1,43 @@
 .section_excellence
-  article
+  &__lead_text
     text-align: center
     font-size: 21px
-    padding: 63px 200px 32px
+    padding: 63px 200px 28px
     h2
       margin-bottom: 12px
+
+  &__banner
+    background: #a0c4e8 url("/images/slider_bg.jpeg")
+    background-size: cover
+    position: relative
+    &_button
+      +size(70px, 100%)
+      position: absolute
+      z-index: 512
+      top: 0
+      background: center no-repeat
+      cursor: pointer
+      &.prev
+        left: 0
+        background-image: url("/src/data-images/slider_arrow--left.png")
+      &.next
+        right: 0
+        background-image: url("/src/data-images/slider_arrow--right.png")
+
+    .slide
+      &__icon
+        &.shield
+          margin: 69px 0 0 147px
+        &.cards
+          margin: 130px 0 0 123px
+        &.talk
+          margin: 98px 0 0 133px
+      &__content
+        width: 630px
+        float: right
+        padding: 146px 100px 0 0
+        h3
+          font:
+            size: 36px
+            weight: normal
+          margin-bottom: 16px

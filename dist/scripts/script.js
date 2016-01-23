@@ -1,8 +1,1 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-$(function(){
-    $("select").select2({
-        minimumResultsForSearch: Infinity
-    });
-});
-
-},{}]},{},[1])
+!function e(r,n,t){function o(u,c){if(!n[u]){if(!r[u]){var l="function"==typeof require&&require;if(!c&&l)return l(u,!0);if(i)return i(u,!0);throw new Error("Cannot find module '"+u+"'")}var a=n[u]={exports:{}};r[u][0].call(a.exports,function(e){var n=r[u][1][e];return o(n?n:e)},a,a.exports,e,r,n,t)}return n[u].exports}for(var i="function"==typeof require&&require,u=0;u<t.length;u++)o(t[u]);return o}({1:[function(e,r,n){$(function(){$("select").select2({minimumResultsForSearch:1/0}),$("#excellence__banner").iosSlider({snapToChildren:!0,desktopClickDrag:!0,autoSlide:!0,autoSlideTimer:4e3,navPrevSelector:"#excellence__banner__prev",navNextSelector:"#excellence__banner__next"})})},{}]},{},[1]);

@@ -1,0 +1,22 @@
+{
+  "name": "tui",
+  "description": "",
+  "main": "gulpfile.babel.js",
+  "authors": [
+    "And Nothing Else"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/and-nothing-else/tui",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "iosslider": "~1.3.12"
+  }
+}

@@ -21,6 +21,7 @@ import uglify from 'gulp-uglify'
 const
     dirs = {
         npm: './node_modules',
+        bower: './bower_components',
         src: './src',
         src_images: './src/images',
         dest: './dist'
@@ -28,7 +29,8 @@ const
     files = {
         vendor: {
             jquery: `${dirs.npm}/jquery/dist/jquery.min.js`,
-            select2: `${dirs.npm}/select2/dist/js/select2.full.min.js`
+            select2: `${dirs.npm}/select2/dist/js/select2.full.min.js`,
+            iosslider: `${dirs.bower}/iosslider/_src/jquery.iosslider.min.js`
         },
         source: {
             templates: `${dirs.src}/*.jade`,
@@ -59,7 +61,8 @@ gulp.task('clean', () => {
 gulp.task('copy', () => {
     gulp.src([
         files.vendor.jquery,
-        files.vendor.select2
+        files.vendor.select2,
+        files.vendor.iosslider
     ]).pipe(gulp.dest(files.dest.vendor));
     gulp.src(`${dirs.src_images}/**/*.*`)
         .pipe(gulp.dest(files.dest.images))
