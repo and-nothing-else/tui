@@ -111,7 +111,7 @@ gulp.task('compile', () => {
 
 
 gulp.task('watch', () => {
-    livereload.listen(35729, (err) => {
+    livereload.listen((err) => {
         if (err) {
             return console.log(err);
         }

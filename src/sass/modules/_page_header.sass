@@ -2,10 +2,12 @@
   @extend .clearfix
   &__logo
     +make-col()
+    line-height: 29px
+    padding-left: 17px
   &__cblock
     +pull-right()
     +make-col()
-    padding-top: 27px
+    padding-top: 31px
     color: white
     text:
       shadow: $shadow-color 0 1px 1px
@@ -18,6 +20,7 @@
       font:
         size: 28px
         weight: bold
+      margin-bottom: 8px
     &_link
       @extend .btn-link
       color: white
