@@ -10,11 +10,13 @@
     white-space: nowrap
     +make-col(28px)
     height: 100%
-    color: $body-color
     position: relative
     &:hover
       +gradient-vertical(darken(white, 10%), darken(#efefef, 15%))
       @extend %link-immutable
+    &, &:hover, &:focus, &:active
+      color: $body-color
+      text-decoration: none
 
     &:not(:first-child)
       &:before

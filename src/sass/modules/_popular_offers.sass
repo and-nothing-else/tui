@@ -15,8 +15,20 @@ $popular-offers-tile-height: 250px
     +box-shadow($shadow-color 0 5px 20px)
     +border-radius($border-radius-lg)
     overflow: hidden
+    & > .active
+      +gradient-vertical(#f3f3f3, #ddd)
+      +box-shadow(inset $shadow-color 0 0 3px)
   &__content
     padding: 0 $grid-gutter-width /2
+    position: relative
+    &_variant
+      visibility: hidden
+      opacity: 0
+      @extend %full-size
+      &.active
+        visibility: visible
+        opacity: 1
+        position: static
   &__grid
     +make-row($popular-offers-gutter)
     &_tile
