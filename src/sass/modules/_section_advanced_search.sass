@@ -1,0 +1,49 @@
+.section_advanced_search
+  background: #8cbae8 url("/src/data-images/as_sky.png")
+  background-size: 100% 100%
+
+.advanced_search
+  background: url("/images/as_clouds.png") center bottom no-repeat
+  background-size: 100% 542px
+  padding: 73px 0 0
+
+  h2
+    text-align: center
+    color: white
+    margin-bottom: 20px
+
+  .state_select
+    @extend %nav-panel
+    display: table
+    width: 1064px
+    margin: 0 auto 20px
+    +box-shadow($shadow-color 0 5px 20px)
+    +border-radius($border-radius-lg)
+    overflow: hidden
+    & > *
+      display: table-cell
+      float: none
+      padding-left: 30px
+      border-right: 0!important
+      & + *
+        border-left: $border-width dotted #ccc
+      &.active + *
+        border-left: $border-width solid white
+      &:before
+        display: none!important
+    & > .active
+      +gradient-vertical(#f3f3f3, #ddd)
+      +box-shadow(inset $shadow-color 0 0 3px)
+    .flag
+      box-shadow: $shadow-color 0 2px 5px
+      margin-right: 9px
+
+  h3
+    font:
+      size: 36px
+      weight: bold
+    color: #df1412
+    text-align: center
+    small
+      display: block
+      font-size: 18px

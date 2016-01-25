@@ -81,7 +81,7 @@ gulp.task('sass', () => {
         .on('error', sass.logError)
         .pipe(inline_base64({
             baseDir: files.source.style_dir,
-            maxSize: 320 * 320,
+            maxSize: 320 * 1200,
             debug: !production
         }))
         .pipe(autoprefixer({
