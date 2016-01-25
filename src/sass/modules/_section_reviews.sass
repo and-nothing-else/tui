@@ -1,0 +1,43 @@
+.review
+  &s
+    width: 731px
+    margin: 0 auto
+
+    h2
+      text-align: center
+      margin-bottom: 36px
+
+    .show_more
+      color: $body-color
+      box-shadow: rgba(0,0,0,0.49) 0 2px 5px
+      &:active
+        +box-shadow(rgba(0,0,0,.1) 0 0 2px)
+      @extend .center-block
+      padding-left: 29px
+      padding-right: 54px
+
+
+  &_list
+    +list-unstyled()
+    margin-bottom: 20px
+
+    &__item
+      +clearfix()
+      margin-bottom: 42px
+      &_user
+        width: 142px
+        +pull-left()
+        margin-top: 3px
+        margin-right: 20px
+        text-align: center
+        .avatar
+          display: block
+          border: 5px solid white
+          border-radius: 50%
+          max-width: 142px
+          box-shadow: rgba(0,0,0,.2) 0 6px 16px
+          margin-bottom: 8px
+        .name
+          color: #e65c5c
+          font-size: 18px
+

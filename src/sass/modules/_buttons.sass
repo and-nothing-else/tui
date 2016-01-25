@@ -7,6 +7,9 @@
   @extend .button
   border-color: white
   +gradient-vertical(#f3f3f3, #dddddd)
+  &:hover
+    +gradient-vertical(darken(#f3f3f3, 10%), darken(#dddddd, 10%))
+    border-color: darken(white, 10%)
   font:
     size: 18px
     weight: bold
