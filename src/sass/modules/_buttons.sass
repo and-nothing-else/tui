@@ -1,10 +1,21 @@
 .button
   @extend .btn
+  +button-size(0, 18px, 18px, 47px, 5px)
+  height: 50px
+
+.default_button
+  @extend .button
+  border-color: white
+  +gradient-vertical(#f3f3f3, #dddddd)
+  font:
+    size: 18px
+    weight: bold
+  color: #a00101
+  text-shadow: white 0 2px 2px
+
 .primary_button
   @extend .button
   @extend .btn-primary
-  +button-size(0, 18px, 18px, 47px, 5px)
-  height: 50px
   +gradient-vertical($btn-primary-bg, darken($btn-primary-bg, 10%))
   text-shadow: $shadow-color 0 2px 5px
   +box-shadow(rgba(0,0,0,.49) 0 2px 5px)

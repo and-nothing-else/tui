@@ -37,8 +37,6 @@ $popular-offers-tile-height: 250px
       height: $popular-offers-tile-height
       margin-bottom: $popular-offers-gutter
       display: table
-      &.double
-        +make-col-span(2, $popular-offers-grid-columns)
       &.vertical
         height: $popular-offers-tile-height*2 + $popular-offers-gutter
       &.right
@@ -59,7 +57,7 @@ $popular-offers-tile-height: 250px
         text-shadow: rgba(0,0,0,.71) 0 1px 5px
         +transition(box-shadow $transition-duration-hover ease)
         cursor: pointer
-        padding: 20px 12px
+        padding: 20px
         &:hover
           +box-shadow($shadow-color 0 2px 16px)
         &:after
@@ -71,3 +69,45 @@ $popular-offers-tile-height: 250px
         &_bg
           @extend %full-size
           z-index: -1
+
+        .label
+          margin: 0 -8px 16px
+
+        .button
+          @extend .default_button
+          display: block
+          position: relative
+          padding-left: 61px
+          &:before
+            content: ''
+            position: absolute
+            top: -2px
+            left: -2px
+            +size(61px, 50px)
+            background: url("/src/data-images/button-plane.png") no-repeat
+          .default
+            display: inline
+          .hover
+            display: none
+          &:hover
+            border-color: #e65c5c
+            color: white
+            text-shadow: $shadow-color 0 2px 5px
+            +gradient-vertical($brand-primary, darken($brand-primary, 10%))
+            .default
+              display: none
+            .hover
+              display: inline
+
+      &.double
+        +make-col-span(2, $popular-offers-grid-columns)
+
+        .label
+          display: table-cell
+          width: 330px
+          text-align: left
+          white-space: nowrap
+          vertical-align: middle
+        .button
+          display: table-cell
+          width: 216px
