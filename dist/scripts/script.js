@@ -1,1 +1,32 @@
-!function e(r,t,n){function a(s,c){if(!t[s]){if(!r[s]){var o="function"==typeof require&&require;if(!c&&o)return o(s,!0);if(i)return i(s,!0);throw new Error("Cannot find module '"+s+"'")}var l=t[s]={exports:{}};r[s][0].call(l.exports,function(e){var t=r[s][1][e];return a(t?t:e)},l,l.exports,e,r,t,n)}return t[s].exports}for(var i="function"==typeof require&&require,s=0;s<n.length;s++)a(n[s]);return a}({1:[function(e,r,t){$(function(){$("select").select2({minimumResultsForSearch:1/0}),$("#excellence__banner").iosSlider({snapToChildren:!0,desktopClickDrag:!0,autoSlide:!0,autoSlideTimer:4e3,navPrevSelector:"#excellence__banner__prev",navNextSelector:"#excellence__banner__next"}),$(".tab_set").each(function(){var e=$(this),r=e.find(".tab_link"),t=e.find(".tab_pane");r.removeClass("active").first().addClass("active"),t.removeClass("active").first().addClass("active"),r.on("click",function(e){e.preventDefault();var n=$(this);n.hasClass("active")||(r.removeClass("active"),n.addClass("active"),t.removeClass("active").eq(n.index()).addClass("active"))})})})},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+$(function(){
+    $("select").select2({
+        minimumResultsForSearch: Infinity
+    });
+    $('#excellence__banner').iosSlider({
+        snapToChildren: true,
+        desktopClickDrag: true,
+        autoSlide: true,
+        autoSlideTimer: 4000,
+        navPrevSelector: "#excellence__banner__prev",
+        navNextSelector: "#excellence__banner__next"
+    });
+    $(".tab_set").each(function () {
+        var $tabSet = $(this),
+            $tabLinks = $tabSet.find(".tab_link"),
+            $tabPanes = $tabSet.find(".tab_pane");
+        $tabLinks.removeClass("active").first().addClass("active");
+        $tabPanes.removeClass("active").first().addClass("active");
+        $tabLinks.on('click', function(e){
+            e.preventDefault();
+            var $activeLink = $(this);
+            if(!$activeLink.hasClass("active")) {
+                $tabLinks.removeClass("active");
+                $activeLink.addClass("active");
+                $tabPanes.removeClass("active").eq($activeLink.index()).addClass("active");
+            }
+        });
+    })
+});
+
+},{}]},{},[1])

@@ -114,15 +114,11 @@ gulp.task('compile', () => {
 
 
 gulp.task('watch', () => {
-    livereload.listen((err) => {
-        if (err) {
-            return console.log(err);
-        }
-        gulp.watch(`${dirs.src_images}/**/*.*`, ['copy']);
-        gulp.watch(`${dirs.src}/**/*.jade`, ['jade']);
-        gulp.watch(`${dirs.src}/**/*.{js,jsx}`, ['compile']);
-        gulp.watch(`${dirs.src}/**/*.{sass,scss}`, ['sass']);
-    });
+    livereload.listen();
+    gulp.watch(`${dirs.src_images}/**/*.*`, ['copy']);
+    gulp.watch(`${dirs.src}/**/*.jade`, ['jade']);
+    gulp.watch(`${dirs.src}/**/*.{js,jsx}`, ['compile']);
+    gulp.watch(`${dirs.src}/**/*.{sass,scss}`, ['sass']);
 });
 
 
