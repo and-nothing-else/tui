@@ -6,23 +6,23 @@
     +gradient-vertical(white, #eee)
     height: 168px
     padding: 24px 0 0
-    margin-bottom: 27px
     .logo
       width: 222px
       @extend .center-block
       img
         margin-bottom: 5px
-  h4
-    text-align: center
-    font:
-      size: 24px
-      weight: normal
-    display: none
-    margin-bottom: 21px
-    .feedback_default &.we_are_too_fast
-      display: block
   &__form
-    padding: 0 67px 34px
+    padding: 27px 0 34px
+    @extend %full-size
+    h4
+      text-align: center
+      font:
+        size: 24px
+        weight: normal
+      display: none
+      margin-bottom: 21px
+      .feedback_default &.we_are_too_fast
+        display: block
     label
       font:
         size: 18px
@@ -43,5 +43,43 @@
       margin-top: 29px
       padding-left: 38px
       padding-right: 38px
+  &__fieldset
+    padding: 0 67px
+
+  &__ok
+    @extend %full-size
+    text-align: center
+    padding: 74px 30px 30px
+    h4
+      font:
+        size: 36px
+        weight: normal
+      margin-bottom: 23px
+      text-transform: uppercase
+    &_text
+      font-size: 24px
+      line-height: 29px
+      min-height: 122px
 
 
+  //animation effect
+  &__content
+    position: relative
+    transform-origin: center
+    perspective: 400px
+    .feedback_default &
+      min-height: 358px
+
+  &__form, &__ok
+    backface-visibility: hidden
+    transition: transform .5s ease
+
+  &__form
+    transform: rotateX(0deg)
+  &.ok &__form
+    transform: rotateX(180deg)
+
+  &__ok
+    transform: rotateX(-180deg)
+  &.ok &__ok
+    transform: rotateX(0deg)

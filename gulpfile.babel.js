@@ -32,7 +32,8 @@ const
             jquery: `${dirs.npm}/jquery/dist/jquery.min.js`,
             select2: `${dirs.npm}/select2/dist/js/select2.full.min.js`,
             iosslider: `${dirs.bower}/iosslider/_src/jquery.iosslider.min.js`,
-            fancybox: `${dirs.bower}/fancybox/source/**/*.*`
+            fancybox: `${dirs.bower}/fancybox/source/**/*.*`,
+            form: `${dirs.bower}/jquery-form/jquery.form.js`
         },
         source: {
             templates: `${dirs.src}/*.jade`,
@@ -64,7 +65,8 @@ gulp.task('copy', () => {
     gulp.src([
         files.vendor.jquery,
         files.vendor.select2,
-        files.vendor.iosslider
+        files.vendor.iosslider,
+        files.vendor.form
     ]).pipe(gulp.dest(files.dest.vendor));
     gulp.src(files.vendor.fancybox).pipe(gulp.dest(`${files.dest.vendor}/fancybox/`));
     gulp.src(`${dirs.src_images}/**/*.*`)

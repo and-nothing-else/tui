@@ -72,9 +72,26 @@ $(function(){
             padding: 0,
             width: 472,
             closeBtn: false,
-            wrapCSS: 'feedback_default'
+            wrapCSS: 'feedback_default',
+            afterShow: function(){
+                var $form = $("#popup_feedback_form"),
+                    $popup = $(".popup_feedback");
+                $form.ajaxForm({
+                    beforeSubmit: function(arr){
+                        $popup.addClass("load")
+                    },
+                    success: function(data){
+                        $popup.removeClass("load").addClass("ok")
+                    }
+                });
+            }
         });
     });
+
+    $("body").on("click", ".fancybox_close", function(e){
+        e.preventDefault();
+        $.fancybox.close();
+    })
 
 });
 
