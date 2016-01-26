@@ -34,7 +34,7 @@ $(function(){
         mainMenuFixed = false;
 
     function setMainMenuPosition() {
-        var scrollTop = $("body").scrollTop();
+        var scrollTop = $(window).scrollTop();
         if(scrollTop >= mainMenuDefaultPos) {
             if(!mainMenuFixed){
                 $mainMenu.addClass("fixed");
