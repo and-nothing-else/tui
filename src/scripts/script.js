@@ -61,6 +61,18 @@ $(function(){
     $sectionLinks.click(function(e){
         e.preventDefault();
         scroll2section($(this).attr("href").replace("#", ""));
-    })
+    });
+
+    $(".button_feedback").on("click", function(e){
+        e.preventDefault();
+        $.fancybox({
+            href: '/popup_feedback.html',
+            type: 'ajax',
+            padding: 0,
+            width: 472,
+            closeBtn: false,
+            wrapCSS: 'feedback_default'
+        });
+    });
 
 });

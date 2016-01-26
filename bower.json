@@ -17,6 +17,7 @@
     "tests"
   ],
   "devDependencies": {
-    "iosslider": "~1.3.12"
+    "iosslider": "~1.3.12",
+    "fancybox": "~2.1.5"
   }
 }

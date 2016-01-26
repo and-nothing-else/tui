@@ -3,6 +3,7 @@ html(lang="ru")
     head
         title TUI
         link(href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic', rel='stylesheet')
+        link(rel="stylesheet", href="/vendor/fancybox/jquery.fancybox.css")
         link(rel="stylesheet", href="/styles/style.css")
     body
         .layout
@@ -12,7 +13,7 @@ html(lang="ru")
                     | туры от туроператора TUI
                 .page_header__cblock.phone
                     .page_header__cblock_info (495) 995-24-44
-                    button.page_header__cblock_link Обратный звонок
+                    button.page_header__cblock_link.button_feedback Обратный звонок
                 .page_header__cblock.where
                     .page_header__cblock_pre без выходных
                     .page_header__cblock_info 9:00 - 21:00
@@ -80,4 +81,5 @@ html(lang="ru")
         script(src='/vendor/jquery.min.js')
         script(src='/vendor/select2.full.min.js')
         script(src='/vendor/jquery.iosslider.min.js')
+        script(src='/vendor/fancybox/jquery.fancybox.pack.js')
         script(src='/scripts/script.js')

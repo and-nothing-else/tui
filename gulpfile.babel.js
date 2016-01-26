@@ -2,6 +2,7 @@ import gulp from 'gulp'
 import gutil from 'gulp-util'
 import livereload from 'gulp-livereload'
 import server from 'gulp-express'
+import clean from 'gulp-clean'
 
 import jade from 'gulp-jade'
 
@@ -30,7 +31,8 @@ const
         vendor: {
             jquery: `${dirs.npm}/jquery/dist/jquery.min.js`,
             select2: `${dirs.npm}/select2/dist/js/select2.full.min.js`,
-            iosslider: `${dirs.bower}/iosslider/_src/jquery.iosslider.min.js`
+            iosslider: `${dirs.bower}/iosslider/_src/jquery.iosslider.min.js`,
+            fancybox: `${dirs.bower}/fancybox/source/**/*.*`
         },
         source: {
             templates: `${dirs.src}/*.jade`,
@@ -64,6 +66,7 @@ gulp.task('copy', () => {
         files.vendor.select2,
         files.vendor.iosslider
     ]).pipe(gulp.dest(files.dest.vendor));
+    gulp.src(files.vendor.fancybox).pipe(gulp.dest(`${files.dest.vendor}/fancybox/`));
     gulp.src(`${dirs.src_images}/**/*.*`)
         .pipe(gulp.dest(files.dest.images))
         .pipe(production ? gutil.noop() : livereload());
@@ -80,7 +83,6 @@ gulp.task('sass', () => {
     return sass(files.source.style, {sourcemap: !production})
         .on('error', sass.logError)
         .pipe(inline_base64({
-            baseDir: files.source.style_dir,
             maxSize: 320 * 1200,
             debug: !production
         }))
