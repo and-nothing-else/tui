@@ -1,0 +1,39 @@
+.section_contact
+  height: 592px
+  position: relative
+
+  .map
+    +size(100%)
+
+  &__info
+    position: absolute
+    background: #f6f6f6
+    top: 50px
+    left: 50px
+    box-shadow: $shadow-color 0 0 25px
+    +border-radius($border-radius)
+    text-align: center
+    padding: 20px 0 0
+    width: 416px
+    .logo
+      img
+        margin-bottom: 8px
+      margin-bottom: 25px
+
+    .all
+      box-shadow: rgba(0,0,0,.27) 0 5px 25px
+      border: 1px solid white
+      +border-bottom-radius($border-radius)
+      +gradient-vertical(#f8f8f8, #e7e7e7)
+      padding: 24px 0 0
+      .phone
+        font-size: 30px
+        margin-bottom: 11px
+      .primary_button
+        margin-bottom: 16px
+      .contact_details
+        margin-bottom: 45px
+        dt
+          margin-bottom: 6px
+        dd
+          margin-bottom: 13px

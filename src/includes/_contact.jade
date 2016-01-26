@@ -1,0 +1,29 @@
+.map#map
+.section_contact__info
+    .logo
+        img(src='/images/logo.png')
+        | туры от туроператора TUI
+    .all
+        .phone +7 (495) 995-24-44
+        button.primary_button Заказать обратный звонок
+        dl.contact_details
+            dt Адрес:
+            dd
+                | г. Москва, ул. Тверская д.18 корп.1,
+                br
+                | 3 этаж офис 305
+            dt График работы:
+            dd
+                | Понедельник – пятница с 10.00 до 20.00
+                br
+                | Суббота - Воскресенье с 10.00 до 19.00
+
+script.
+    var map;
+    function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 55.765415, lng: 37.603511},
+    zoom: 17
+    });
+    }
+script(src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCY88kKKy8suhaZ5xOTHMqbBD8akI0qcE4&callback=initMap")

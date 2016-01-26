@@ -25,5 +25,5 @@ $(function(){
                 $tabPanes.removeClass("active").eq($activeLink.index()).addClass("active");
             }
         });
-    })
+    });
 });
