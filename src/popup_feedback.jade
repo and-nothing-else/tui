@@ -8,15 +8,17 @@
             h4.we_are_too_fast Мы перезвоним Вам через 5 секунд!
             h4.order Оставить заявку
             .popup_feedback__fieldset
-                .popup_feedback__form_group.name
+                .popup_feedback__form_group.form_group.name.required
                     label Ваше имя:
                     input(type="text")
-                .popup_feedback__form_group.email
+                    .error Обязательно для заполнения
+                .popup_feedback__form_group.form_group.email
                     label Ваш email:
                     input(type="text")
-                .popup_feedback__form_group.phone
+                .popup_feedback__form_group.form_group.phone.required
                     label Ваш телефон:
                     input(type="text")
+                    .error Обязательно для заполнения
                 button.primary_button.submit(type="submit") Отправить заявку
             .load
         .popup_feedback__ok

@@ -72,12 +72,23 @@ $(function(){
             width: 472,
             closeBtn: false,
             wrapCSS: 'feedback_default',
+            scrolling: 'visible',
             afterShow: function(){
                 var $form = $("#popup_feedback_form"),
                     $popup = $(".popup_feedback");
                 $form.ajaxForm({
                     beforeSubmit: function(arr){
-                        $popup.addClass("load")
+                        var validated = true;
+                        $form.find(".required").each(function(){
+                            if(!$(this).val()) {
+                                validated = false;
+                                $(this).closest(".form_group").addClass("error")
+                            }
+                        });
+                        if (validated) {
+                            $popup.addClass("load");
+                        }
+                        return validated;
                     },
                     success: function(data){
                         $popup.removeClass("load").addClass("ok")
@@ -87,9 +98,13 @@ $(function(){
         });
     });
 
-    $("body").on("click", ".fancybox_close", function(e){
-        e.preventDefault();
-        $.fancybox.close();
-    })
+    $("body")
+        .on("click", ".fancybox_close", function(e){
+            e.preventDefault();
+            $.fancybox.close();
+        })
+        .on("focus", "input", function(){
+            $(this).closest(".form_group").removeClass("error")
+        });
 
 });
