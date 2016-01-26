@@ -29,7 +29,8 @@ $(function(){
     });
 
     var $mainMenu = $("#main_menu"),
-        mainMenuDefaultPos = 0,
+        mainMenuDefaultPos = $mainMenu.offset().top,
+        mainMenuHeight = $mainMenu.height(),
         mainMenuFixed = false;
 
     function setMainMenuPosition() {
@@ -46,8 +47,21 @@ $(function(){
             }
         }
     }
-    mainMenuDefaultPos = $mainMenu.offset().top;
+
+    function scroll2section(sectionID) {
+        var $section = $("#section_" + sectionID),
+            scrollPosition = $section.offset().top - mainMenuHeight;
+        $("html,body").animate({
+            scrollTop: scrollPosition,
+            duration: 500
+        });
+    }
+
     $(window).scroll(setMainMenuPosition);
+    $mainMenu.find("a").click(function(e){
+        e.preventDefault();
+        scroll2section($(this).attr("href").replace("#", ""));
+    })
 
 });
 
