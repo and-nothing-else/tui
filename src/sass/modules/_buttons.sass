@@ -26,3 +26,16 @@
     +gradient-vertical($btn-primary-bg, darken($btn-primary-bg, 5%))
   &:active
     +box-shadow(rgba(0,0,0,.1) 0 0 2px)
+
+.success_button
+  @extend .button
+  border-color: #93d7a8
+  +gradient-vertical(#54cc79, #5eb779)
+  &:hover
+    +gradient-vertical(darken(#54cc79, 10%), darken(#5eb779, 10%))
+  font:
+    size: 18px
+    weight: bold
+  color: white
+  text-shadow: $shadow-color 0 2px 5px
+

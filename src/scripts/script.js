@@ -1,4 +1,14 @@
 $(function(){
+    var visitTimer,
+        obsessiveTimeout = 30000,
+        obsesssiveShown = false,
+        $mainMenu = $("#main_menu"),
+        $sectionLinks = $(".section_link"),
+        mainMenuDefaultPos = $mainMenu.offset().top,
+        mainMenuHeight = $mainMenu.height(),
+        mainMenuFixed = false;
+
+
     $("select").select2({
         minimumResultsForSearch: Infinity
     });
@@ -26,12 +36,6 @@ $(function(){
             }
         });
     });
-
-    var $mainMenu = $("#main_menu"),
-        $sectionLinks = $(".section_link"),
-        mainMenuDefaultPos = $mainMenu.offset().top,
-        mainMenuHeight = $mainMenu.height(),
-        mainMenuFixed = false;
 
     function setMainMenuPosition() {
         var scrollTop = $(window).scrollTop();
@@ -87,6 +91,42 @@ $(function(){
         });
     }
 
+    function showObsessivePopup() {
+        $.fancybox({
+            href: '/popup_obsessive.html',
+            type: 'ajax',
+            padding: 0,
+            width: 639,
+            closeBtn: false,
+            wrapCSS: 'popup_obsessive',
+            afterShow: function(){
+                var $form = $("#popup_obsessive_form"),
+                    $popup = $(".popup_obsessive");
+                $form.ajaxForm({
+                    beforeSubmit: function(arr){
+                        var validated = true;
+                        $form.find(".required").each(function(){
+                            var $field = $(this).find("input,select,textarea");
+                            if(!$field.val()) {
+                                validated = false;
+                                $(this).addClass("error")
+                            }
+                        });
+                        if (validated) {
+                            $popup.addClass("load");
+                        }
+                        return validated;
+                    },
+                    success: function(data){
+                        $popup.removeClass("load").addClass("ok")
+                    }
+                });
+            }
+        });
+        obsesssiveShown = true;
+    }
+    visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
+
     $(".button_feedback").on("click", function(e){
         e.preventDefault();
         $.fancybox({
@@ -114,6 +154,7 @@ $(function(){
         });
     });
 
+
     $("body")
         .on("click", ".fancybox_close", function(e){
             e.preventDefault();
@@ -121,6 +162,22 @@ $(function(){
         })
         .on("focus", "input", function(){
             $(this).closest(".form_group").removeClass("error")
-        });
+        })
+        .on("click", function(){
+            clearTimeout(visitTimer);
+            if(!obsesssiveShown)
+                visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
+        })
+        .on("click", "#po_yes", function(){
+            var $popup = $("#popup_obsessive");
+            $popup.find(".step1").removeClass("active");
+            $popup.find(".popup_obsessive__step.step2").addClass("active yes");
+        })
+        .on("click", "#po_no", function(){
+            var $popup = $("#popup_obsessive");
+            $popup.find(".step1").removeClass("active");
+            $popup.find(".popup_obsessive__step.step2").addClass("active no");
+        })
+    ;
 
 });

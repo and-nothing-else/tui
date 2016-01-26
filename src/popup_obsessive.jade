@@ -1,0 +1,31 @@
+.popup_obsessive#popup_obsessive
+    .popup_obsessive__step.step1.active
+        .popup_obsessive__message
+            | Вы были у нас на сайте дольше 30 секунд.
+            br
+            | Вы нашли то, что искали?
+        .popup_obsessive__buttons
+            button.success_button#po_yes Да
+            button.primary_button#po_no Нет
+    .popup_obsessive__step.step2
+        .popup_obsessive__message.step2.yes
+            p Мы очень рады!
+            p.note Мы перезвоним вам в течение 5 минут и обсудим детали?
+        .popup_obsessive__message.step2.no
+            p Очень жаль :(
+            p.note
+                | Мы можем перезвонить вам в течение 5 минут
+                br
+                | и помочь найти нужную информацию!
+        form.popup_obsessive__form#popup_obsessive_form
+            input(type="text", placeholder="Ваш номер телефона")
+            button.primary_button Жду звонка!
+    .popup_obsessive__step.ok
+        .popup_obsessive__message
+            p.h Спасибо!
+            p.note
+                | Менеджеры агентства свяжутся с вами
+                br
+                | в течение 15 минут!
+        .popup_obsessive__buttons
+            button.primary_button.fancybox_close Вернуться на сайт
