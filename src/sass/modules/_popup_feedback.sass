@@ -72,10 +72,28 @@
 
   &__form, &__ok
     backface-visibility: hidden
-    transition: transform .5s ease
+    transition: transform 1s ease
 
   &__form
     transform: rotateX(0deg)
+    position: relative
+    .load
+      @extend %full-size
+      opacity: 0
+      visibility: hidden
+      transition: opacity .5s ease
+  &.load &__form
+    .load
+      opacity: .8
+      background: white
+      visibility: visible
+      &:before
+        content: ''
+        @extend %loader
+        margin: -11px 0 0 -63px
+        position: absolute
+        top: 50%
+        left: 50%
   &.ok &__form
     transform: rotateX(180deg)
 
