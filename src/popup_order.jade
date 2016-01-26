@@ -1,14 +1,18 @@
-.popup_feedback
+.popup_feedback.order
     .popup_feedback__header
         .logo
             img(src='/images/logo.png')
             | туры от туроператора TUI
     .popup_feedback__content
         form.popup_feedback__form#popup_feedback_form(method="post", action="/api/feedback/")
-            h4 Мы перезвоним Вам через 5 секунд!
+            h4 Оставить заявку
             .popup_feedback__fieldset
                 .popup_feedback__form_group.form_group.name.required
                     label Ваше имя:
+                    input(type="text")
+                    .error Обязательно для заполнения
+                .popup_feedback__form_group.form_group.email.required
+                    label Ваш email:
                     input(type="text")
                     .error Обязательно для заполнения
                 .popup_feedback__form_group.form_group.phone.required

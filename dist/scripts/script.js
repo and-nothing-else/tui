@@ -64,6 +64,30 @@ $(function(){
         scroll2section($(this).attr("href").replace("#", ""));
     });
 
+    function _ajaxForm() {
+        var $form = $("#popup_feedback_form"),
+            $popup = $(".popup_feedback");
+        $form.ajaxForm({
+            beforeSubmit: function(arr){
+                var validated = true;
+                $form.find(".required").each(function(){
+                    var $field = $(this).find("input,select,textarea");
+                    if(!$field.val()) {
+                        validated = false;
+                        $(this).addClass("error")
+                    }
+                });
+                if (validated) {
+                    $popup.addClass("load");
+                }
+                return validated;
+            },
+            success: function(data){
+                $popup.removeClass("load").addClass("ok")
+            }
+        });
+    }
+
     $(".button_feedback").on("click", function(e){
         e.preventDefault();
         $.fancybox({
@@ -74,28 +98,20 @@ $(function(){
             closeBtn: false,
             wrapCSS: 'feedback_default',
             scrolling: 'visible',
-            afterShow: function(){
-                var $form = $("#popup_feedback_form"),
-                    $popup = $(".popup_feedback");
-                $form.ajaxForm({
-                    beforeSubmit: function(arr){
-                        var validated = true;
-                        $form.find(".required").each(function(){
-                            if(!$(this).val()) {
-                                validated = false;
-                                $(this).closest(".form_group").addClass("error")
-                            }
-                        });
-                        if (validated) {
-                            $popup.addClass("load");
-                        }
-                        return validated;
-                    },
-                    success: function(data){
-                        $popup.removeClass("load").addClass("ok")
-                    }
-                });
-            }
+            afterShow: _ajaxForm
+        });
+    });
+    $('.start_order').on("click", function(e) {
+        e.preventDefault();
+        $.fancybox({
+            href: '/popup_order.html',
+            type: 'ajax',
+            padding: 0,
+            width: 472,
+            closeBtn: false,
+            wrapCSS: 'order',
+            scrolling: 'visible',
+            afterShow: _ajaxForm
         });
     });
 
