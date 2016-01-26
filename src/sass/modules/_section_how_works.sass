@@ -1,0 +1,34 @@
+.how_works
+  h2
+    text-align: center
+    margin-bottom: 36px
+
+  &__process
+    +list-unstyled()
+    @extend .clearfix
+    padding-right: 30px
+    margin-bottom: 51px
+    & > li
+      float: left
+      width: 33.33%
+      padding: 201px 20px 0
+      text-align: center
+      position: relative
+      font:
+        weight: bold
+        size: 18px
+      &.step1
+        background: url("/images/hw_step1.png") 119px 16px no-repeat
+      &.step2
+        background: url("/images/hw_step2.png") center top no-repeat
+      &.step3
+        background: url("/images/hw_step3.png") 119px 14px no-repeat
+      & + li
+        &:before
+          content: ''
+          +size(135px, 9px)
+          display: block
+          position: absolute
+          background: url("/src/data-images/step2step.png")
+          top: 93px
+          left: -62px
