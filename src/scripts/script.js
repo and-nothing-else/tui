@@ -28,6 +28,7 @@ $(function(){
     });
 
     var $mainMenu = $("#main_menu"),
+        $sectionLinks = $(".section_link"),
         mainMenuDefaultPos = $mainMenu.offset().top,
         mainMenuHeight = $mainMenu.height(),
         mainMenuFixed = false;
@@ -52,12 +53,12 @@ $(function(){
             scrollPosition = $section.offset().top - mainMenuHeight;
         $("html,body").animate({
             scrollTop: scrollPosition,
-            duration: 500
+            duration: 3000
         });
     }
 
     $(window).scroll(setMainMenuPosition);
-    $mainMenu.find("a").click(function(e){
+    $sectionLinks.click(function(e){
         e.preventDefault();
         scroll2section($(this).attr("href").replace("#", ""));
     })
