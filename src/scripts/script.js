@@ -26,4 +26,26 @@ $(function(){
             }
         });
     });
+
+    var $mainMenu = $("#main_menu"),
+        mainMenuDefaultPos = 0,
+        mainMenuFixed = false;
+
+    function setMainMenuPosition() {
+        var scrollTop = $("body").scrollTop();
+        if(scrollTop >= mainMenuDefaultPos) {
+            if(!mainMenuFixed){
+                $mainMenu.addClass("fixed");
+                mainMenuFixed = true;
+            }
+        } else {
+            if(mainMenuFixed){
+                $mainMenu.removeClass("fixed");
+                mainMenuFixed = false;
+            }
+        }
+    }
+    mainMenuDefaultPos = $mainMenu.offset().top;
+    $(window).scroll(setMainMenuPosition);
+
 });

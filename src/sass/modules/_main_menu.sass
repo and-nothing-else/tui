@@ -5,6 +5,8 @@
   display: table
   line-height: 1
   overflow: hidden
+  opacity: 1
+  +transition(opacity 1s ease)
   & > *
     display: table-cell
     float: none
@@ -15,4 +17,11 @@
       width: auto
     &:first-child
       text-align: right
+
+  &.fixed
+    position: fixed
+    top: 0
+    +border-top-radius(0)
+    opacity: .9
+    z-index: 4096
 
