@@ -142,6 +142,7 @@ $(function(){
             afterShow: function(){
                 var currentStep = 1,
                     $popupGetTour = $("#popup_get_tour"),
+                    $steps = $("#popup_get_tour_steps"),
                     $childBox = $("#child_box"),
                     $addChildContainer = $("#add_child_container")
                     ;
@@ -152,6 +153,10 @@ $(function(){
                     .on("click", ".prev", function(){
                         getTourSetStep(--currentStep);
                     });
+                $steps.on("click", ".step", function(){
+                    currentStep = $(this).index() + 1;
+                    getTourSetStep(currentStep);
+                });
                 $popupGetTour.find("select").select2({
                     minimumResultsForSearch: Infinity
                 });
