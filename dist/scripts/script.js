@@ -141,7 +141,9 @@ $(function(){
             wrapCSS: 'popup_get_tour',
             afterShow: function(){
                 var currentStep = 1,
-                    $popupGetTour = $("#popup_get_tour")
+                    $popupGetTour = $("#popup_get_tour"),
+                    $childBox = $("#child_box"),
+                    $addChildContainer = $("#add_child_container")
                     ;
                 $popupGetTour
                     .on("click", ".next", function(){
@@ -155,6 +157,35 @@ $(function(){
                 });
                 $popupGetTour.find("input[type=checkbox], input[type=radio]").iCheck();
                 $("#popup_get_tour_calendar").datepicker();
+
+                function addChild(d) {
+                    var $ch = $("<div/>").addClass("child").text(d),
+                        $close = $("<button type='button'/>").addClass("close").html("&times;");
+                    $close.click(function(){
+                        $ch.addClass("out");
+                        setTimeout(function(){
+                            $ch.detach();
+                            $addChildContainer.removeClass('hidden');
+                        }, 300);
+                    });
+                    $ch.append($close);
+                    $childBox.append($ch);
+                    return $childBox.children().size();
+                }
+
+                $("#addChild")
+                    .select2({
+                        minimumResultsForSearch: Infinity,
+                        placeholder: "Добавить ребёнка"
+                    })
+                    .on("select2:select", function(e){
+                        var numChild = addChild(e.target.value);
+                        $(this).val(null).trigger('change');
+                        if(numChild >= 3) {
+                            $addChildContainer.addClass('hidden');
+                        }
+                    });
+
                 getTourSetStep(currentStep);
                 _ajaxForm($popupGetTour, $(".popup_get_tour"));
             }

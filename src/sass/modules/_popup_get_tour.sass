@@ -151,7 +151,7 @@
       &.step3
         padding-top: 24px
       &.step4
-        padding-top: 60px
+        padding-top: 10px
       &.step5
         padding-top: 10px
       .radio_inline
@@ -163,6 +163,44 @@
             size: 14px
           + label
             margin-left: 22px
+
+      .children
+        transform-origin: center top
+        perspective: 400px
+
+        .child
+          +size(100%, 45px)
+          line-height: 45px
+          padding: 0 9px
+          background: #fbe6e4
+          border: $border-width solid #f8b6b1
+          +border-radius($border-radius-sm)
+          margin-bottom: 10px
+          color: #f17132
+          font-size: 14px
+          transform: scale(1) rotateX(0deg)
+          position: relative
+          &.out
+            transform: scale(.8) rotateX(-40deg)
+          .close
+            @extend .btn
+            @extend .btn-link
+            position: absolute
+            right: 0
+            top: 1px
+            padding: 0
+            +size(40px)
+            color: #f8b6b1
+            font-size: 20px
+
+        .add_child_container
+          transform: scale(1) rotateX(0deg)
+          opacity: 1
+          +transition(all .2s ease)
+          &.hidden
+            transform: scale(.8) rotateX(-40deg)
+            opacity: 0
+
 
 
   &__buttons

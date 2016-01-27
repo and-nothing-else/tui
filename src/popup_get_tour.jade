@@ -57,12 +57,16 @@
                             .action_button.decrease —
                             input.value(value=1, type="text")
                             .action_button.increase +
-                    .form_group
+                    .form_group.children
                         label Детей
-                        select#addChild
-                            option 1 год
-                            option 2 года
-                            option 3 года
+                        .child_box#child_box
+
+                        .add_child_container#add_child_container
+                            select#addChild
+                                option
+                                option 1 год
+                                option 2 года
+                                option 3 года
             .step.step5
                 h4.popup_get_tour__content_header Расскажите о себе поподробнее!
                 .field_set.step5
