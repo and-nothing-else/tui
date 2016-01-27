@@ -31,6 +31,7 @@ const
         vendor: {
             jquery: `${dirs.npm}/jquery-ui/dist/jquery.min.js`,
             jquery_ui: `${dirs.bower}/jquery-ui/jquery-ui.min.js`,
+            jquery_ui_i18n: `${dirs.bower}/jquery-ui/ui/i18n/datepicker-ru.js`,
             jquery_ui_css: `${dirs.bower}/jquery-ui/themes/base/jquery-ui.min.css`,
             select2: `${dirs.npm}/select2/dist/js/select2.full.min.js`,
             iosslider: `${dirs.bower}/iosslider/_src/jquery.iosslider.min.js`,
@@ -68,6 +69,7 @@ gulp.task('copy', () => {
     gulp.src([
         files.vendor.jquery,
         files.vendor.jquery_ui,
+        files.vendor.jquery_ui_i18n,
         files.vendor.jquery_ui_css,
         files.vendor.select2,
         files.vendor.iosslider,
