@@ -104,3 +104,45 @@
           background: url("/src/data-images/step_icon_5.png") 12px 11px no-repeat
         &:after
           background: url("/src/data-images/step_icon_5_active.png") 7px 4px no-repeat
+
+
+  &__buttons
+    +size(100%, 71px)
+    position: absolute
+    bottom: 0
+    left: 0
+    .step
+      @extend %full-size
+      padding: 0 20px 0 50px
+      display: none
+      &.active
+        display: block
+      .next
+        @extend .primary_button
+        +pull-right()
+        padding-right: 55px
+        padding-left: 37px
+        position: relative
+        &:after
+          content: ''
+          +size(9px, 14px)
+          background: url("/src/data-images/next.png") no-repeat
+          position: absolute
+          top: 16px
+          right: 28px
+      .prev
+        @extend .button
+        @extend .btn-link
+        color: $body-color
+        font:
+          size: 18px
+          weight: bold
+        position: relative
+        &:before
+          content: ''
+          +size(7px, 14px)
+          background: url("/src/data-images/prev.png") no-repeat
+          position: absolute
+          top: 17px
+          left: 0
+
