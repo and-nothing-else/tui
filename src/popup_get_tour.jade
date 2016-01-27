@@ -36,10 +36,18 @@
                 h4.popup_get_tour__content_header На сколько ночей?
                 .note Укажите продолжительность поездки
                 .field_set.step3
-                    .number_field
-                        .action_button.decrease —
-                        input.value(value=1, type="text")
-                        .action_button.increase +
+                    .form_group
+                        .number_field
+                            .action_button.decrease —
+                            input.value(value=1, type="text")
+                            .action_button.increase +
+                    .form_group.radio_inline
+                        label
+                            input(type="radio", name="duration", value="nearly", checked="checked")
+                            | ± 2 ночи
+                        label
+                            input(type="radio", name="duration", value="exactly")
+                            | ровно
             .step.step4
                 h4.popup_get_tour__content_header Сколько человек едет в тур?
                 .field_set.step4
