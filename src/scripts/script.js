@@ -161,6 +161,7 @@ $(function(){
                 });
                 $popupGetTour.find("input[type=checkbox], input[type=radio]").iCheck();
                 $("#popup_get_tour_calendar").datepicker({
+                    minDate: new Date()
                     //changeMonth: true,
                     //changeYear: true
                 });

@@ -31,14 +31,24 @@
         &-calendar
           th
             text-transform: uppercase
+            padding: 7px 0 5px
             font:
               size: 13px
               weight: normal
           td
             .ui-state-default
               border: 0
+              padding: 1px 0 2px
               background: transparent
-              +size(26px, 30px)
+              +size(28px, 29px)
+              line-height: 28px
+              text-align: center
+            .ui-state-highlight
+              background: #ccc
+              color: black
+            .ui-state-active
+              background: #d70404
+              color: white
         &-week-end
           span, .ui-state-default
             color: red
