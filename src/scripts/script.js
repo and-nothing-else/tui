@@ -1,7 +1,7 @@
 $(function(){
     var visitTimer,
         obsessiveTimeout = 30000,
-        obsesssiveShown = false,
+        obsessiveShown = false,
         $mainMenu = $("#main_menu"),
         $sectionLinks = $(".section_link"),
         mainMenuDefaultPos = $mainMenu.offset().top,
@@ -123,9 +123,46 @@ $(function(){
                 });
             }
         });
-        obsesssiveShown = true;
+        obsessiveShown = true;
     }
     visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
+
+    $("#get_tour").click(function(){
+        $.fancybox({
+            href: '/popup_get_tour.html',
+            type: 'ajax',
+            padding: 0,
+            width: 879,
+            height: 681,
+            closeBtn: false,
+            fitToView: false,
+            wrapCSS: 'popup_get)tour',
+            afterShow: function(){
+                var $form = $("#popup_get_tour"),
+                    $popup = $(".popup_get_tour");
+                $form.ajaxForm({
+                    beforeSubmit: function(arr){
+                        var validated = true;
+                        $form.find(".required").each(function(){
+                            var $field = $(this).find("input,select,textarea");
+                            if(!$field.val()) {
+                                validated = false;
+                                $(this).addClass("error")
+                            }
+                        });
+                        if (validated) {
+                            $popup.addClass("load");
+                        }
+                        return validated;
+                    },
+                    success: function(data){
+                        $popup.removeClass("load").addClass("ok")
+                    }
+                });
+            }
+        });
+        obsessiveShown = true;
+    });
 
     $(".button_feedback").on("click", function(e){
         e.preventDefault();
@@ -139,6 +176,7 @@ $(function(){
             scrolling: 'visible',
             afterShow: _ajaxForm
         });
+        obsessiveShown = true;
     });
     $('.start_order').on("click", function(e) {
         e.preventDefault();
@@ -152,6 +190,7 @@ $(function(){
             scrolling: 'visible',
             afterShow: _ajaxForm
         });
+        obsessiveShown = true;
     });
 
 
@@ -165,7 +204,7 @@ $(function(){
         })
         .on("click", function(){
             clearTimeout(visitTimer);
-            if(!obsesssiveShown)
+            if(!obsessiveShown)
                 visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
         })
         .on("click", "#po_yes", function(){
