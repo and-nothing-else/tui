@@ -159,7 +159,7 @@ $(function(){
                 $("#popup_get_tour_calendar").datepicker();
 
                 function addChild(d) {
-                    var $ch = $("<div/>").addClass("child").text(d),
+                    var $ch = $("<div/>").addClass("child out").text(d),
                         $close = $("<button type='button'/>").addClass("close").html("&times;");
                     $close.click(function(){
                         $ch.addClass("out");
@@ -170,6 +170,9 @@ $(function(){
                     });
                     $ch.append($close);
                     $childBox.append($ch);
+                    setTimeout(function(){
+                        $ch.removeClass("out");
+                    }, 1);
                     return $childBox.children().size();
                 }
 

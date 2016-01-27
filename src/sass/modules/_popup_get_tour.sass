@@ -179,8 +179,11 @@
           color: #f17132
           font-size: 14px
           transform: scale(1) rotateX(0deg)
+          opacity: 1
           position: relative
+          +transition(all .3s ease)
           &.out
+            opacity: 0
             transform: scale(.8) rotateX(-40deg)
           .close
             @extend .btn
