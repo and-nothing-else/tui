@@ -1,4 +1,4 @@
-.popup_get_tour
+.popup_get_tour#popup_get_tour
     .popup_get_tour__header
         .popup_get_tour__header_label
             | Мгновенный подбор тура с вылетом из Москвы
@@ -7,7 +7,7 @@
             .popup_get_tour__header_phone_number
                 | (499) 653 92 94
 
-        .steps
+        .steps#popup_get_tour_steps
             .step.step1.active(title="Выбор направления")
                 .icon
             .step.step2(title="Выбор даты")
@@ -18,6 +18,18 @@
                 .icon
             .step.step5(title="Контактная информация")
                 .icon
+
+    .popup_get_tour__content
+        .step.step1.active
+            h4.popup_get_tour__content_header Где Вы хотите отдохнуть? Выберите страну:
+        .step.step2
+            h4.popup_get_tour__content_header Когда Вы хотите вылететь?
+        .step.step3
+            h4.popup_get_tour__content_header На сколько ночей?
+        .step.step4
+            h4.popup_get_tour__content_header Сколько человек едет в тур?
+        .step.step5
+            h4.popup_get_tour__content_header Расскажите о себе поподробнее!
 
     .popup_get_tour__buttons
         .step.step1

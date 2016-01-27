@@ -7,6 +7,7 @@
     +border-top-radius($border-radius)
     +gradient-vertical(white, #eee)
     padding: 34px 28px 0 37px
+    margin-bottom: 64px
     position: relative
     &_label
       font:
@@ -104,6 +105,19 @@
           background: url("/src/data-images/step_icon_5.png") 12px 11px no-repeat
         &:after
           background: url("/src/data-images/step_icon_5_active.png") 7px 4px no-repeat
+
+  &__content
+    position: relative
+    .step
+      @extend %full-size
+      visibility: hidden
+      &.active
+        visibility: visible
+    &_header
+      font:
+        size: 30px
+        weight: bold
+      text-align: center
 
 
   &__buttons

@@ -68,9 +68,7 @@ $(function(){
         scroll2section($(this).attr("href").replace("#", ""));
     });
 
-    function _ajaxForm() {
-        var $form = $("#popup_feedback_form"),
-            $popup = $(".popup_feedback");
+    function _ajaxForm($form, $popup) {
         $form.ajaxForm({
             beforeSubmit: function(arr){
                 var validated = true;
@@ -101,32 +99,19 @@ $(function(){
             closeBtn: false,
             wrapCSS: 'popup_obsessive',
             afterShow: function(){
-                var $form = $("#popup_obsessive_form"),
-                    $popup = $(".popup_obsessive");
-                $form.ajaxForm({
-                    beforeSubmit: function(arr){
-                        var validated = true;
-                        $form.find(".required").each(function(){
-                            var $field = $(this).find("input,select,textarea");
-                            if(!$field.val()) {
-                                validated = false;
-                                $(this).addClass("error")
-                            }
-                        });
-                        if (validated) {
-                            $popup.addClass("load");
-                        }
-                        return validated;
-                    },
-                    success: function(data){
-                        $popup.removeClass("load").addClass("ok")
-                    }
-                });
+                _ajaxForm($("#popup_obsessive_form"), $(".popup_obsessive"));
             }
         });
         obsessiveShown = true;
     }
     visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
+
+    function getTourSetStep(stepNumber) {
+        var $popupGetTourSteps = $("#popup_get_tour_steps");
+        $popupGetTourSteps.find(".step").removeClass("active");
+        $popupGetTourSteps.find(".step:lt("+stepNumber+")").addClass("active");
+        console.log(stepNumber)
+    }
 
     $("#get_tour").click(function(){
         $.fancybox({
@@ -139,27 +124,14 @@ $(function(){
             fitToView: false,
             wrapCSS: 'popup_get)tour',
             afterShow: function(){
-                var $form = $("#popup_get_tour"),
-                    $popup = $(".popup_get_tour");
-                $form.ajaxForm({
-                    beforeSubmit: function(arr){
-                        var validated = true;
-                        $form.find(".required").each(function(){
-                            var $field = $(this).find("input,select,textarea");
-                            if(!$field.val()) {
-                                validated = false;
-                                $(this).addClass("error")
-                            }
-                        });
-                        if (validated) {
-                            $popup.addClass("load");
-                        }
-                        return validated;
-                    },
-                    success: function(data){
-                        $popup.removeClass("load").addClass("ok")
-                    }
-                });
+                var $popupGetTour = $("#popup_get_tour"),
+                    currentStep = 1;
+                _ajaxForm($popupGetTour, $(".popup_get_tour"));
+                $popupGetTour
+                    .on("click", ".next", function(){
+                        getTourSetStep(++currentStep);
+                    });
+                getTourSetStep(currentStep);
             }
         });
         obsessiveShown = true;
@@ -175,7 +147,9 @@ $(function(){
             closeBtn: false,
             wrapCSS: 'feedback_default',
             scrolling: 'visible',
-            afterShow: _ajaxForm
+            afterShow: function () {
+                _ajaxForm($("#popup_feedback_form"), $(".popup_feedback"))
+            }
         });
         obsessiveShown = true;
     });
@@ -189,7 +163,9 @@ $(function(){
             closeBtn: false,
             wrapCSS: 'order',
             scrolling: 'visible',
-            afterShow: _ajaxForm
+            afterShow: function () {
+                _ajaxForm($("#popup_feedback_form"), $(".popup_feedback"))
+            }
         });
         obsessiveShown = true;
     });
