@@ -152,6 +152,7 @@ $(function(){
                 $popupGetTour.find("select").select2({
                     minimumResultsForSearch: Infinity
                 });
+                $("#popup_get_tour_calendar").datepicker();
                 getTourSetStep(currentStep);
                 _ajaxForm($popupGetTour, $(".popup_get_tour"));
             }

@@ -29,7 +29,9 @@ const
     },
     files = {
         vendor: {
-            jquery: `${dirs.npm}/jquery/dist/jquery.min.js`,
+            jquery: `${dirs.npm}/jquery-ui/dist/jquery.min.js`,
+            jquery_ui: `${dirs.bower}/jquery-ui/jquery-ui.min.js`,
+            jquery_ui_css: `${dirs.bower}/jquery-ui/themes/base/jquery-ui.min.css`,
             select2: `${dirs.npm}/select2/dist/js/select2.full.min.js`,
             iosslider: `${dirs.bower}/iosslider/_src/jquery.iosslider.min.js`,
             fancybox: `${dirs.bower}/fancybox/source/**/*.*`,
@@ -64,6 +66,8 @@ gulp.task('clean', () => {
 gulp.task('copy', () => {
     gulp.src([
         files.vendor.jquery,
+        files.vendor.jquery_ui,
+        files.vendor.jquery_ui_css,
         files.vendor.select2,
         files.vendor.iosslider,
         files.vendor.form

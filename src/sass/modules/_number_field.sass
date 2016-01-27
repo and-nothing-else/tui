@@ -1,0 +1,24 @@
+@mixin number_field($width: 264px, $height: 45px, $buttonWidth: $height)
+  $lineHeight: 8px
+  +size($width, $height)
+  .action_button
+    @extend .primary_button
+    +pull-left()
+    +size($buttonWidth, $height)
+    line-height: $lineHeight
+    padding: ($height - $lineHeight)/2 0
+    +box-shadow(none)
+    &:first-child
+      +border-right-radius(0)
+    &:last-child
+      +border-left-radius(0)
+  .value
+    +size($width - $buttonWidth*2 - $border-width*4, $height)
+    +border-radius(0)
+    border-left-width: 0
+    border-right-width: 0
+    +pull-left()
+
+
+.number_field
+  +number_field()

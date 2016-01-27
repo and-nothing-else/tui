@@ -30,12 +30,22 @@
                         option Фиджи
             .step.step2
                 h4.popup_get_tour__content_header Когда Вы хотите вылететь?
+                .field_set.step2
+                    #popup_get_tour_calendar
             .step.step3
                 h4.popup_get_tour__content_header На сколько ночей?
+                .note Укажите продолжительность поездки
+                .field_set.step3
+                    .number_field
+                        .action_button.decrease —
+                        input.value(value=1, type="text")
+                        .action_button.increase +
             .step.step4
                 h4.popup_get_tour__content_header Сколько человек едет в тур?
+                .field_set.step4
             .step.step5
                 h4.popup_get_tour__content_header Расскажите о себе поподробнее!
+                .field_set.step5
 
         .popup_get_tour__buttons#popup_get_tour_buttons
             .step.step1

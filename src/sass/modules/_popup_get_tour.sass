@@ -130,13 +130,23 @@
         size: 30px
         weight: bold
       text-align: center
+    .note
+      text-align: center
     .field_set
       width: 264px
       @extend .center-block
       input[type=text], select, .select2-selection--single
         padding: $input-padding-y-lg 11px
-      .step1
-        padding-top: 30px
+      &.step1
+        padding-top: 60px
+      &.step2
+        padding-top: 60px
+      &.step3
+        padding-top: 24px
+      &.step4
+        padding-top: 60px
+      &.step5
+        padding-top: 60px
 
 
   &__buttons

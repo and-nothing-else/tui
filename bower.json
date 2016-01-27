@@ -19,6 +19,7 @@
   "devDependencies": {
     "iosslider": "~1.3.12",
     "fancybox": "~2.1.5",
-    "jquery-form": "https://github.com/malsup/form.git#~3.46.0"
+    "jquery-form": "https://github.com/malsup/form.git#~3.46.0",
+    "jquery-ui": "jqueryui#~1.11.4"
   }
 }
