@@ -19,32 +19,38 @@
             .step.step5(title="Контактная информация")
                 .icon
 
-    .popup_get_tour__content#popup_get_tour_content
-        .step.step1.active
-            h4.popup_get_tour__content_header Где Вы хотите отдохнуть? Выберите страну:
-        .step.step2
-            h4.popup_get_tour__content_header Когда Вы хотите вылететь?
-        .step.step3
-            h4.popup_get_tour__content_header На сколько ночей?
-        .step.step4
-            h4.popup_get_tour__content_header Сколько человек едет в тур?
-        .step.step5
-            h4.popup_get_tour__content_header Расскажите о себе поподробнее!
+    form#popup_get_tour_form
+        .popup_get_tour__content#popup_get_tour_content
+            .step.step1.active
+                h4.popup_get_tour__content_header Где Вы хотите отдохнуть? Выберите страну:
+                .field_set.step1
+                    select
+                        option Турция
+                        option Аргентина
+                        option Фиджи
+            .step.step2
+                h4.popup_get_tour__content_header Когда Вы хотите вылететь?
+            .step.step3
+                h4.popup_get_tour__content_header На сколько ночей?
+            .step.step4
+                h4.popup_get_tour__content_header Сколько человек едет в тур?
+            .step.step5
+                h4.popup_get_tour__content_header Расскажите о себе поподробнее!
 
-    .popup_get_tour__buttons#popup_get_tour_buttons
-        .step.step1
-            button.next Следующий шаг
-        .step.step2.active
-            button.prev Выбор направления
-            button.next Следующий шаг
-        .step.step3
-            button.prev Выбор даты
-            button.next Следующий шаг
-        .step.step4
-            button.prev Продолжительность
-            button.next Следующий шаг
-        .step.step5
-            button.prev Кто едет
-            button.submit Отправить запрос
+        .popup_get_tour__buttons#popup_get_tour_buttons
+            .step.step1
+                button.next Следующий шаг
+            .step.step2.active
+                button.prev Выбор направления
+                button.next Следующий шаг
+            .step.step3
+                button.prev Выбор даты
+                button.next Следующий шаг
+            .step.step4
+                button.prev Продолжительность
+                button.next Следующий шаг
+            .step.step5
+                button.prev Кто едет
+                button.submit(type="submit") Отправить запрос
 
 

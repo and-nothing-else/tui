@@ -4,6 +4,9 @@ select,
 {
   @extend .form-control;
 }
+select {
+  height: 50px;
+}
 
 @import "select2/core";
 

@@ -1,5 +1,7 @@
 .select2-dropdown {
-  margin-top: 22px;
+  &.order_form_dropdown {
+    margin-top: 22px;
+  }
   background-color: white;
 
   border: 1px solid #aaa;
@@ -14,7 +16,7 @@
 
   width: 100%;
 
-  z-index: 1051;
+  z-index: 99999;
 }
 
 .select2-results {

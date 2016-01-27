@@ -13,6 +13,10 @@ $(function(){
     $("select").select2({
         minimumResultsForSearch: Infinity
     });
+    $(".order_form select").select2({
+        minimumResultsForSearch: Infinity,
+        dropdownCssClass: 'order_form_dropdown'
+    });
     $('#excellence__banner').iosSlider({
         snapToChildren: true,
         desktopClickDrag: true,
@@ -123,8 +127,6 @@ $(function(){
         $popupGetTourButtons.find(".step:lt("+stepIndex+")").removeClass("active").addClass("completed");
         $popupGetTourButtons.find(".step:eq("+stepIndex+")").addClass("active").removeClass("completed");
         $popupGetTourButtons.find(".step:gt("+stepIndex+")").removeClass("active completed");
-
-        console.log(stepNumber)
     }
 
     $("#get_tour").click(function(){
@@ -136,7 +138,7 @@ $(function(){
             height: 681,
             closeBtn: false,
             fitToView: false,
-            wrapCSS: 'popup_get)tour',
+            wrapCSS: 'popup_get_tour',
             afterShow: function(){
                 var currentStep = 1,
                     $popupGetTour = $("#popup_get_tour")
@@ -148,6 +150,9 @@ $(function(){
                     .on("click", ".prev", function(){
                         getTourSetStep(--currentStep);
                     });
+                $popupGetTour.find("select").select2({
+                    minimumResultsForSearch: Infinity
+                });
                 getTourSetStep(currentStep);
                 _ajaxForm($popupGetTour, $(".popup_get_tour"));
             }
