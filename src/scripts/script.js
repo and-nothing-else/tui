@@ -127,13 +127,7 @@ $(function(){
         $popupGetTourButtons.find(".step:eq("+stepIndex+")").addClass("active").removeClass("completed");
         $popupGetTourButtons.find(".step:gt("+stepIndex+")").removeClass("active completed");
     }
-    $('#main-nav-h a').click(function (e) {
-        e.preventDefault();
-        $(this)
-            .tab('show')
-            .closest("li").addClass("active")
-            .siblings().removeClass("active");
-    });
+
     $("#get_tour").click(function(){
         $.fancybox({
             href: '/popup_get_tour.html',
@@ -222,6 +216,25 @@ $(function(){
             var $popup = $("#popup_obsessive");
             $popup.find(".step1").removeClass("active");
             $popup.find(".popup_obsessive__step.step2").addClass("active no");
+        })
+        .on("click", ".number_field .action_button", function(){
+            var $numberField = $(this).closest(".number_field"),
+                $input = $numberField.find(".value"),
+                value = parseInt($input.val());
+            if(isNaN(value) || value < 1) value = 1;
+            if($(this).hasClass("increase")){
+                value++;
+                $input.val(value);
+            }
+            if($(this).hasClass("decrease")){
+                value--;
+                if(value > 0) $input.val(value);
+            }
+        })
+        .on("change keyup", ".number_field .value", function(){
+            var value = parseInt($(this).val());
+            if(isNaN(value) || value < 1) value = 1;
+            $(this).val(value);
         })
     ;
 
