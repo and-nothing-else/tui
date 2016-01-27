@@ -127,7 +127,13 @@ $(function(){
         $popupGetTourButtons.find(".step:eq("+stepIndex+")").addClass("active").removeClass("completed");
         $popupGetTourButtons.find(".step:gt("+stepIndex+")").removeClass("active completed");
     }
-
+    $('#main-nav-h a').click(function (e) {
+        e.preventDefault();
+        $(this)
+            .tab('show')
+            .closest("li").addClass("active")
+            .siblings().removeClass("active");
+    });
     $("#get_tour").click(function(){
         $.fancybox({
             href: '/popup_get_tour.html',

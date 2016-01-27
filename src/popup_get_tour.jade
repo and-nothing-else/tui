@@ -43,24 +43,48 @@
             .step.step4
                 h4.popup_get_tour__content_header Сколько человек едет в тур?
                 .field_set.step4
+                    .form_group
+                        label Взрослых
+                        .number_field
+                            .action_button.decrease —
+                            input.value(value=1, type="text")
+                            .action_button.increase +
+                    .form_group
+                        label Детей
+                        select#addChild
+                            option 1 год
+                            option 2 года
+                            option 3 года
             .step.step5
                 h4.popup_get_tour__content_header Расскажите о себе поподробнее!
                 .field_set.step5
+                    .form_group.required
+                        label Ваше имя
+                        input(type="text")
+                        .error Обязательно для заполнения
+                    .form_group.required
+                        label Телефон
+                        input(type="text")
+                        .error Обязательно для заполнения
+                    .form_group.required
+                        label email
+                        input(type="text")
+                        .error Обязательно для заполнения
 
         .popup_get_tour__buttons#popup_get_tour_buttons
             .step.step1
-                button.next Следующий шаг
+                button.next(type="button") Следующий шаг
             .step.step2.active
-                button.prev Выбор направления
-                button.next Следующий шаг
+                button.prev(type="button") Выбор направления
+                button.next(type="button") Следующий шаг
             .step.step3
-                button.prev Выбор даты
-                button.next Следующий шаг
+                button.prev(type="button") Выбор даты
+                button.next(type="button") Следующий шаг
             .step.step4
-                button.prev Продолжительность
-                button.next Следующий шаг
+                button.prev(type="button") Продолжительность
+                button.next(type="button") Следующий шаг
             .step.step5
-                button.prev Кто едет
+                button.prev(type="button") Кто едет
                 button.submit(type="submit") Отправить запрос
 
 
