@@ -108,11 +108,23 @@
 
   &__content
     position: relative
+    overflow: hidden
+    +size(100%, 400px)
+    perspective: 600px
     .step
       @extend %full-size
       visibility: hidden
+      opacity: 0
+      transform: translate(600px, 0) scale(.5) rotateY(30deg)
+      +transition(all 1s ease)
       &.active
         visibility: visible
+        opacity: 1
+        transform: translate(0, 0) scale(1) rotateY(0deg)
+      &.completed
+        visibility: visible
+        opacity: 0
+        transform: translate(-600px, 0) scale(.5) rotateY(-30deg)
     &_header
       font:
         size: 30px
@@ -131,11 +143,14 @@
       display: none
       &.active
         display: block
-      .next
+      .next, .submit
         @extend .primary_button
         +pull-right()
-        padding-right: 55px
         padding-left: 37px
+      .submit
+        padding-right: 37px
+      .next
+        padding-right: 55px
         position: relative
         &:after
           content: ''

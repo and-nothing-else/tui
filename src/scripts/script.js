@@ -106,9 +106,23 @@ $(function(){
     visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
 
     function getTourSetStep(stepNumber) {
-        var $popupGetTourSteps = $("#popup_get_tour_steps");
+        var stepIndex = stepNumber - 1,
+            $popupGetTourSteps = $("#popup_get_tour_steps"),
+            $popupGetTourContent = $("#popup_get_tour_content"),
+            $popupGetTourButtons = $("#popup_get_tour_buttons")
+            ;
+
         $popupGetTourSteps.find(".step").removeClass("active");
         $popupGetTourSteps.find(".step:lt("+stepNumber+")").addClass("active");
+
+        $popupGetTourContent.find(".step:lt("+stepIndex+")").removeClass("active").addClass("completed");
+        $popupGetTourContent.find(".step:eq("+stepIndex+")").addClass("active").removeClass("completed");
+        $popupGetTourContent.find(".step:gt("+stepIndex+")").removeClass("active completed");
+
+        $popupGetTourButtons.find(".step:lt("+stepIndex+")").removeClass("active").addClass("completed");
+        $popupGetTourButtons.find(".step:eq("+stepIndex+")").addClass("active").removeClass("completed");
+        $popupGetTourButtons.find(".step:gt("+stepIndex+")").removeClass("active completed");
+
         console.log(stepNumber)
     }
 
@@ -123,14 +137,18 @@ $(function(){
             fitToView: false,
             wrapCSS: 'popup_get)tour',
             afterShow: function(){
-                var $popupGetTour = $("#popup_get_tour"),
-                    currentStep = 1;
-                _ajaxForm($popupGetTour, $(".popup_get_tour"));
+                var currentStep = 1,
+                    $popupGetTour = $("#popup_get_tour")
+                    ;
                 $popupGetTour
                     .on("click", ".next", function(){
                         getTourSetStep(++currentStep);
+                    })
+                    .on("click", ".prev", function(){
+                        getTourSetStep(--currentStep);
                     });
                 getTourSetStep(currentStep);
+                _ajaxForm($popupGetTour, $(".popup_get_tour"));
             }
         });
         obsessiveShown = true;
