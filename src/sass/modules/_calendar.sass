@@ -1,0 +1,45 @@
+.calendar
+  border: $border-width solid #ddd
+  +border-radius(1px)
+  +size(347px, 296px)
+  background: white
+
+  &__nav
+    +size(98px, 100%)
+    +pull-left()
+    border-right: $border-width solid #ddd
+
+  &__datepicker
+    +size(245px, 100%)
+    +pull-right()
+    .ui
+      &-widget
+        font-family: 'Roboto', sans-serif!important
+      &-datepicker
+        width: 100%
+        border: 0!important
+        background: transparent
+        padding: 9px 11px 0 13px
+        &-header
+          background: transparent
+          border: 0
+          padding: 0
+        &-title
+          font:
+            size: 18px
+            weight: normal
+        &-calendar
+          th
+            text-transform: uppercase
+            font:
+              size: 13px
+              weight: normal
+          td
+            .ui-state-default
+              border: 0
+              background: transparent
+              +size(26px, 30px)
+        &-week-end
+          span, .ui-state-default
+            color: red
+

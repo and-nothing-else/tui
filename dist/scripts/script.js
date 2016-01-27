@@ -161,7 +161,10 @@ $(function(){
                     minimumResultsForSearch: Infinity
                 });
                 $popupGetTour.find("input[type=checkbox], input[type=radio]").iCheck();
-                $("#popup_get_tour_calendar").datepicker();
+                $("#popup_get_tour_calendar").datepicker({
+                    //changeMonth: true,
+                    //changeYear: true
+                });
 
                 function addChild(d) {
                     var $ch = $("<div/>").addClass("child out").text(d),
