@@ -1,14 +1,14 @@
 .calendar
-    input#date_begin(type="hidden")
-    input#date_end(type="hidden")
+    input.date_begin(type="hidden")
+    input.date_end(type="hidden")
     .calendar__nav
         .calendar__nav_year
             button.year_action.decrease
             button.year_action.increase
-            .calendar__nav_year_value#selected_year
+            .calendar__nav_year_value.selected_year
         .calendar__nav_month
             .calendar__nav_month_box
-                ul#month_nav
+                ul.month_nav
                     li Январь
                     li Февраль
                     li Март
@@ -22,4 +22,4 @@
                     li Ноябрь
                     li Декабрь
     .calendar__datepicker
-        #popup_get_tour_calendar
+        .calendar__datepicker_holder

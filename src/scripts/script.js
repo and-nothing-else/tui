@@ -159,6 +159,68 @@ $(function(){
         $popupGetTourButtons.find(".step:gt("+stepIndex+")").removeClass("active completed");
     }
 
+    function calendarInit($selector) {
+
+        var $dateBeginField = $selector.find(".date_begin"),
+            $dateEndField = $selector.find(".date_end"),
+            defaultMinDate = new Date(),
+            currentYear = new Date().getFullYear(),
+            selectedYear = currentYear,
+            currentMonth = new Date().getMonth(),
+            selectedMonth = currentMonth,
+            $selectedYear = $selector.find(".selected_year"),
+            $monthButton = $selector.find(".month_nav").children()
+            ;
+        $selectedYear.text(selectedYear);
+
+        var $calendar = $selector.find(".calendar__datepicker_holder").datepicker({
+            minDate: defaultMinDate,
+
+            beforeShowDay: function(date) {
+                var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateBeginField.val());
+                var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateEndField.val());
+                return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? "dp-highlight" : ""];
+            },
+            onSelect: function(dateText, inst) {
+                var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateBeginField.val());
+                var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateEndField.val());
+                if (!date1 || date2) {
+                    $dateBeginField.val(dateText);
+                    $dateEndField.val("");
+                    $(this).datepicker("option", "minDate", dateText);
+                } else {
+                    $dateEndField.val(dateText);
+                    $(this).datepicker("option", "minDate", defaultMinDate);
+                }
+            }
+        });
+        function setActiveMonth(number) {
+            $monthButton.removeClass("selected").eq(number).addClass("selected");
+            selectedMonth = number;
+            $calendar.datepicker("setDate", new Date(selectedYear, selectedMonth, 1));
+        }
+        $selector.find(".year_action").on("click", function(){
+            if($(this).hasClass("increase")) {
+                selectedYear++;
+            } else if($(this).hasClass("decrease")) {
+                if(selectedYear > currentYear)
+                    selectedYear--;
+            }
+            $selectedYear.text(selectedYear);
+            $calendar.datepicker("setDate", new Date(selectedYear, selectedMonth, 1));
+        });
+        setActiveMonth(selectedMonth);
+        $monthButton.click(function(){
+            setActiveMonth($(this).index());
+        });
+        $selector.find(".calendar__nav_month_box").slimScroll({
+            height: 244,
+            width: 108,
+            distance: 10,
+            alwaysVisible: false
+        });
+    }
+
     $("#get_tour").click(function(){
         $.fancybox({
             href: '/popup_get_tour.html',
@@ -187,71 +249,11 @@ $(function(){
                     currentStep = $(this).index() + 1;
                     getTourSetStep(currentStep);
                 });
+                calendarInit($popupGetTour.find(".calendar"));
                 $popupGetTour.find("select").select2({
                     minimumResultsForSearch: Infinity
                 });
                 $popupGetTour.find("input[type=checkbox], input[type=radio]").iCheck();
-                var $dateBeginField = $("#date_begin"),
-                    $dateEndField = $("#date_end"),
-                    defaultMinDate = new Date(),
-                    currentYear = new Date().getFullYear(),
-                    selectedYear = currentYear,
-                    currentMonth = new Date().getMonth(),
-                    selectedMonth = currentMonth,
-                    $selectedYear = $("#selected_year"),
-                    $monthButton = $("#month_nav").children()
-                    ;
-                $selectedYear.text(selectedYear);
-
-                var $calendar = $("#popup_get_tour_calendar").datepicker({
-                    minDate: defaultMinDate,
-
-                    beforeShowDay: function(date) {
-                        var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateBeginField.val());
-                        var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateEndField.val());
-                        return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? "dp-highlight" : ""];
-                    },
-                    onSelect: function(dateText, inst) {
-                        var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateBeginField.val());
-                        var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateEndField.val());
-                        if (!date1 || date2) {
-                            $dateBeginField.val(dateText);
-                            $dateEndField.val("");
-                            $(this).datepicker("option", "minDate", dateText);
-                        } else {
-                            $dateEndField.val(dateText);
-                            $(this).datepicker("option", "minDate", defaultMinDate);
-                        }
-                    }
-
-                    //changeMonth: true,
-                    //changeYear: true
-                });
-                $(".year_action").click(function(){
-                    if($(this).hasClass("increase")) {
-                        selectedYear++;
-                    } else if($(this).hasClass("decrease")) {
-                        if(selectedYear > currentYear)
-                            selectedYear--;
-                    }
-                    $selectedYear.text(selectedYear);
-                    $calendar.datepicker("setDate", new Date(selectedYear, selectedMonth, 1));
-                });
-                function setActiveMonth(number) {
-                    $monthButton.removeClass("selected").eq(number).addClass("selected");
-                    selectedMonth = number;
-                    $calendar.datepicker("setDate", new Date(selectedYear, selectedMonth, 1));
-                }
-                setActiveMonth(selectedMonth);
-                $monthButton.click(function(){
-                    setActiveMonth($(this).index());
-                });
-                $(".calendar__nav_month_box").slimScroll({
-                    height: 244,
-                    width: 108,
-                    distance: 10,
-                    alwaysVisible: false
-                });
 
                 function addChild(d) {
                     var $ch = $("<div/>").addClass("child out").text(d),
@@ -325,6 +327,14 @@ $(function(){
         });
         obsessiveShown = true;
     });
+    calendarInit($(".calendar"));
+
+    $(".dates_select_field").on("focus", function(){
+        $(this).closest(".form_group").addClass("active");
+    });
+    $(".form_group.dates").on("click", function(e){
+        e.stopPropagation();
+    });
 
 
     $("body")
@@ -339,6 +349,7 @@ $(function(){
             clearTimeout(visitTimer);
             if(!obsessiveShown)
                 visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
+            $(".form_group.dates").removeClass("active");
         })
         .on("click", "#po_yes", function(){
             var $popup = $("#popup_obsessive");
@@ -369,6 +380,7 @@ $(function(){
             if(isNaN(value) || value < 1) value = 1;
             $(this).val(value);
         })
+
     ;
 
 });

@@ -13,9 +13,11 @@ section.order_form
                     option Тайланд
                     option Новая Зеландия
                     option Кирибати
-            .form_panel__group.dates
+            .form_panel__group.form_group.dates
                 label Даты вылета:
-                input(type='text')
+                input(type='text').dates_select_field
+                .calendar_panel
+                    include ../includes/_calendar
             .form_panel__group.duration
                 label Ночей:
                 select
