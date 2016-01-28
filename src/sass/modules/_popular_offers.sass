@@ -117,7 +117,8 @@ $popular-offers-tile-height: 250px
             display: inline
           .hover
             display: none
-          &:hover
+        &:hover
+          .button
             border-color: #e65c5c
             color: white
             text-shadow: $shadow-color 0 2px 5px
@@ -137,5 +138,6 @@ $popular-offers-tile-height: 250px
           white-space: nowrap
           vertical-align: middle
         .button
-          display: table-cell
+          display: table-cell!important
+          line-height: 46px
           width: 216px
