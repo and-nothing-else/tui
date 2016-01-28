@@ -6,7 +6,10 @@ $(function(){
         $sectionLinks = $(".section_link"),
         mainMenuDefaultPos = $mainMenu.offset().top,
         mainMenuHeight = $mainMenu.height(),
-        mainMenuFixed = false;
+        mainMenuFixed = false,
+        $excellenceBanner = $('#excellence__banner'),
+        sliderInterval = 4000
+    ;
 
 
     $("select").select2({
@@ -16,14 +19,23 @@ $(function(){
         minimumResultsForSearch: Infinity,
         dropdownCssClass: 'order_form_dropdown'
     });
-    $('#excellence__banner').iosSlider({
+    $excellenceBanner.iosSlider({
         snapToChildren: true,
         desktopClickDrag: true,
-        autoSlide: true,
-        autoSlideTimer: 4000,
+        //autoSlide: true,
+        //autoSlideTimer: sliderInterval,
+        infiniteSlider: true,
         navPrevSelector: "#excellence__banner__prev",
         navNextSelector: "#excellence__banner__next"
     });
+    var slidesCount = $excellenceBanner.find(".slide").size(),
+        currentSlide = 0;
+    // да, это лютый трэшак, но в iosslider'е какой-то глюк.
+    setInterval(function(){
+        currentSlide++;
+        $excellenceBanner.iosSlider("goToSlide", currentSlide % slidesCount);
+    }, sliderInterval);
+
     $(".tab_set").each(function () {
         var $tabSet = $(this),
             $tabLinks = $tabSet.find(".tab_link"),
