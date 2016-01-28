@@ -32,8 +32,13 @@
                     h4.popup_get_tour__content_header Когда Вы хотите вылететь?
                     .field_set.step2
                         .calendar
+                            input#date_begin(type="hidden")
+                            input#date_end(type="hidden")
                             .calendar__nav
-                                | 2015
+                                .calendar__nav_year
+                                    button.year_action.decrease
+                                    button.year_action.increase
+                                    .calendar__nav_year_value#selected_year
                             .calendar__datepicker
                                 #popup_get_tour_calendar
                 .step.step3

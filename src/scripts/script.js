@@ -191,10 +191,49 @@ $(function(){
                     minimumResultsForSearch: Infinity
                 });
                 $popupGetTour.find("input[type=checkbox], input[type=radio]").iCheck();
-                $("#popup_get_tour_calendar").datepicker({
-                    minDate: new Date()
+                var $dateBeginField = $("#date_begin"),
+                    $dateEndField = $("#date_end"),
+                    defaultMinDate = new Date(),
+                    currentYear = new Date().getFullYear(),
+                    selectedYear = currentYear,
+                    currentMonth = new Date().getMonth(),
+                    $selectedYear = $("#selected_year")
+                    ;
+                $selectedYear.text(selectedYear);
+
+                var $calendar = $("#popup_get_tour_calendar").datepicker({
+                    minDate: defaultMinDate,
+
+                    beforeShowDay: function(date) {
+                        var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateBeginField.val());
+                        var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateEndField.val());
+                        return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? "dp-highlight" : ""];
+                    },
+                    onSelect: function(dateText, inst) {
+                        var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateBeginField.val());
+                        var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateEndField.val());
+                        if (!date1 || date2) {
+                            $dateBeginField.val(dateText);
+                            $dateEndField.val("");
+                            $(this).datepicker("option", "minDate", dateText);
+                        } else {
+                            $dateEndField.val(dateText);
+                            $(this).datepicker("option", "minDate", defaultMinDate);
+                        }
+                    }
+
                     //changeMonth: true,
                     //changeYear: true
+                });
+                $(".year_action").click(function(){
+                    if($(this).hasClass("increase")) {
+                        selectedYear++;
+                    } else if($(this).hasClass("decrease")) {
+                        if(selectedYear > currentYear)
+                            selectedYear--;
+                    }
+                    $selectedYear.text(selectedYear);
+                    $calendar.datepicker("setDate", new Date(selectedYear, currentMonth, 1));
                 });
 
                 function addChild(d) {

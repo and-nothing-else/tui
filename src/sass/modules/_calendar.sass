@@ -8,6 +8,25 @@
     +size(98px, 100%)
     +pull-left()
     border-right: $border-width solid #ddd
+    &_year
+      +size(100%, 48px)
+      line-height: 48px
+      color: #d70404
+      font-size: 18px
+      text-align: center
+      .year_action
+        +size(15px, 100%)
+        background: transparent
+        padding: 0
+        border: 0
+        cursor: pointer
+        &.decrease
+          +pull-left()
+          background: url("/src/data-images/year_decrease.png") right center no-repeat
+        &.increase
+          +pull-right()
+          background: url("/src/data-images/year_increase.png") left center no-repeat
+
 
   &__datepicker
     +size(245px, 100%)
@@ -49,6 +68,11 @@
             .ui-state-active
               background: #d70404
               color: white
+            &.dp-highlight
+              background: #d70404
+              .ui-state-default
+                color: white
+
         &-week-end
           span, .ui-state-default
             color: red
