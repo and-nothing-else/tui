@@ -98,8 +98,9 @@ $popular-offers-tile-height: 250px
           @extend %full-size
           z-index: -1
 
-        .label
-          margin: 0 -8px 16px
+        .content_part
+          .label
+            margin: 0 -8px 16px
 
         .button
           @extend .default_button
@@ -130,14 +131,19 @@ $popular-offers-tile-height: 250px
 
       &.double
         +make-col-span(2, $popular-offers-grid-columns)
-
-        .label
-          display: table-cell
-          width: 330px
-          text-align: left
-          white-space: nowrap
-          vertical-align: middle
-        .button
-          display: table-cell!important
-          line-height: 46px
-          width: 216px
+        .content_part
+          &__label
+            display: table-cell
+            width: 330px
+            text-align: left
+            vertical-align: middle
+            padding-right: 20px
+            .label
+              margin-bottom: 0
+          &__button
+            display: table-cell
+            vertical-align: bottom
+            line-height: 46px
+            width: 216px
+            .button
+              margin-bottom: 0
