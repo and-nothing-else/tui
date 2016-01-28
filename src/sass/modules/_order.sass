@@ -6,6 +6,11 @@ $order-form-gutter: 6px
     width: 1049px
     margin-top: -84px
     margin-bottom: 52px
+    position: relative
+    .close
+      position: absolute
+      @extend %close
+
     &__groups
       +make-row($order-form-gutter)
     &__group

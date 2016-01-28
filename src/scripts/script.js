@@ -334,6 +334,9 @@ $(function(){
         obsessiveShown = true;
     });
     calendarInit($(".order_form .calendar"), $datesSelectField);
+    $(".order_form .calendar_panel .close").click(function(){
+        $(".form_group.dates").removeClass("active");
+    });
 
     $datesSelectField.on("focus", function(){
         $(this).closest(".form_group").addClass("active");
