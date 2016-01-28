@@ -21,6 +21,7 @@
     "fancybox": "~2.1.5",
     "jquery-form": "https://github.com/malsup/form.git#~3.46.0",
     "jquery-ui": "jqueryui#~1.11.4",
-    "iCheck": "icheck#~1.0.2"
+    "iCheck": "icheck#~1.0.2",
+    "slimScroll": "~1.3.7"
   }
 }

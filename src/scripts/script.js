@@ -199,7 +199,7 @@ $(function(){
                     currentMonth = new Date().getMonth(),
                     selectedMonth = currentMonth,
                     $selectedYear = $("#selected_year"),
-                    $monthButton = $("#month_nav > li")
+                    $monthButton = $("#month_nav").children()
                     ;
                 $selectedYear.text(selectedYear);
 
@@ -245,6 +245,12 @@ $(function(){
                 setActiveMonth(selectedMonth);
                 $monthButton.click(function(){
                     setActiveMonth($(this).index());
+                });
+                $(".calendar__nav_month_box").slimScroll({
+                    height: 244,
+                    width: 108,
+                    distance: 10,
+                    alwaysVisible: false
                 });
 
                 function addChild(d) {

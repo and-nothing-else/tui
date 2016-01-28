@@ -27,19 +27,27 @@
           +pull-right()
           background: url("/src/data-images/year_increase.png") left center no-repeat
     &_month
-      overflow: hidden
       +size(100px, 244px)
       margin: 0 -2px
-      & > ul
-        +list-unstyled()
-        & > li
-          +size(100px, 33px)
-          line-height: 33px
-          padding: 0 0 0 20px
-          cursor: pointer
-          &.selected
-            background: #d70404
-            color: white
+      &_box
+        & > ul
+          +list-unstyled()
+          & > li
+            +size(100px, 33px)
+            line-height: 33px
+            padding: 0 0 0 20px
+            cursor: pointer
+            &.selected
+              background: #d70404
+              color: white
+              position: relative
+              &:after
+                content: ''
+                border: 8px solid transparent
+                border-left-color: #d70404
+                position: absolute
+                right: -16px
+                top: 9px
 
 
   &__datepicker

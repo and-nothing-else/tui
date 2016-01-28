@@ -37,7 +37,8 @@ const
             iosslider: `${dirs.bower}/iosslider/_src/jquery.iosslider.min.js`,
             fancybox: `${dirs.bower}/fancybox/source/**/*.*`,
             form: `${dirs.bower}/jquery-form/jquery.form.js`,
-            icheck: `${dirs.bower}/iCheck/icheck.min.js`
+            icheck: `${dirs.bower}/iCheck/icheck.min.js`,
+            slimscroll: `${dirs.bower}/slimScroll/jquery.slimscroll.min.js`
         },
         source: {
             templates: `${dirs.src}/*.jade`,
@@ -74,7 +75,8 @@ gulp.task('copy', () => {
         files.vendor.select2,
         files.vendor.iosslider,
         files.vendor.form,
-        files.vendor.icheck
+        files.vendor.icheck,
+        files.vendor.slimscroll
     ]).pipe(gulp.dest(files.dest.vendor));
     gulp.src(files.vendor.fancybox).pipe(gulp.dest(`${files.dest.vendor}/fancybox/`));
     gulp.src(`${dirs.src_images}/**/*.*`)
