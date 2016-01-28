@@ -1,11 +1,15 @@
-form.simple_order_form.form_panel
-    h2 Оставьте заявку, и мы найдём то, что вы ищете!
-    .form_panel__groups
-        .form_panel__group.name
-            input(type='text', placeholder="Ваше имя")
-        .form_panel__group.email
-            input(type='text', placeholder="Ваш email")
-        .form_panel__group.phone
-            input(type='text')
-        .form_panel__group.submit
-            button.primary_button Оставить заявку
+.form_container
+    form.simple_order_form.form_panel(method="post", action="/api/feedback/")
+        h2 Оставьте заявку, и мы найдём то, что вы ищете!
+        .form_panel__groups
+            .form_panel__group.form_group.required.name
+                input(type='text', placeholder="Ваше имя")
+                .error.bottom Обязательно для заполнения
+            .form_panel__group.form_group.required.email
+                input(type='text', placeholder="Ваш email")
+                .error.bottom Обязательно для заполнения
+            .form_panel__group.form_group.required.phone
+                input(type='text')
+                .error.bottom Обязательно для заполнения
+            .form_panel__group.submit
+                button.primary_button(type="submit") Оставить заявку

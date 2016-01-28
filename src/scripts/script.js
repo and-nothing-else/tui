@@ -99,7 +99,8 @@ $(function(){
         scroll2section($(this).attr("href").replace("#", ""));
     });
 
-    function _ajaxForm($form, $popup) {
+    function _ajaxForm($form) {
+        var $block = $form.closest(".form_container");
         $form.ajaxForm({
             beforeSubmit: function(arr){
                 var validated = true;
@@ -111,15 +112,17 @@ $(function(){
                     }
                 });
                 if (validated) {
-                    $popup.addClass("load");
+                    $block.addClass("load");
                 }
                 return validated;
             },
             success: function(data){
-                $popup.removeClass("load").addClass("ok")
+                $block.removeClass("load").addClass("ok")
             }
         });
     }
+
+    _ajaxForm($(".simple_order_form"));
 
     function showObsessivePopup() {
         $.fancybox({
@@ -130,7 +133,7 @@ $(function(){
             //closeBtn: false,
             wrapCSS: 'popup_obsessive',
             afterShow: function(){
-                _ajaxForm($("#popup_obsessive_form"), $(".popup_obsessive"));
+                _ajaxForm($("#popup_obsessive_form"));
             }
         });
         obsessiveShown = true;
@@ -226,7 +229,7 @@ $(function(){
                     });
 
                 getTourSetStep(currentStep);
-                _ajaxForm($popupGetTour, $(".popup_get_tour"));
+                _ajaxForm($popupGetTour);
             }
         });
         obsessiveShown = true;
@@ -244,7 +247,7 @@ $(function(){
             wrapCSS: 'feedback_default',
             scrolling: 'visible',
             afterShow: function () {
-                _ajaxForm($("#popup_feedback_form"), $(".popup_feedback"))
+                _ajaxForm($("#popup_feedback_form"))
             }
         });
         obsessiveShown = true;
@@ -261,7 +264,7 @@ $(function(){
             wrapCSS: 'order',
             scrolling: 'visible',
             afterShow: function () {
-                _ajaxForm($("#popup_feedback_form"), $(".popup_feedback"))
+                _ajaxForm($("#popup_feedback_form"))
             }
         });
         obsessiveShown = true;

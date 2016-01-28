@@ -18,89 +18,89 @@
                 .icon
             .step.step5(title="Контактная информация")
                 .icon
+    .form_container
+        form#popup_get_tour_form
+            .popup_get_tour__content#popup_get_tour_content
+                .step.step1.active
+                    h4.popup_get_tour__content_header Где Вы хотите отдохнуть? Выберите страну:
+                    .field_set.step1
+                        select
+                            option Турция
+                            option Аргентина
+                            option Фиджи
+                .step.step2
+                    h4.popup_get_tour__content_header Когда Вы хотите вылететь?
+                    .field_set.step2
+                        .calendar
+                            .calendar__nav
+                                | 2015
+                            .calendar__datepicker
+                                #popup_get_tour_calendar
+                .step.step3
+                    h4.popup_get_tour__content_header На сколько ночей?
+                    .note Укажите продолжительность поездки
+                    .field_set.step3
+                        .form_group
+                            .number_field
+                                .action_button.decrease —
+                                input.value(value=1, type="text")
+                                .action_button.increase +
+                        .form_group.radio_inline
+                            label
+                                input(type="radio", name="duration", value="nearly", checked="checked")
+                                | ± 2 ночи
+                            label
+                                input(type="radio", name="duration", value="exactly")
+                                | ровно
+                .step.step4
+                    h4.popup_get_tour__content_header Сколько человек едет в тур?
+                    .field_set.step4
+                        .form_group
+                            label Взрослых
+                            .number_field
+                                .action_button.decrease —
+                                input.value(value=1, type="text")
+                                .action_button.increase +
+                        .form_group.children
+                            label Детей
+                            .child_box#child_box
 
-    form#popup_get_tour_form
-        .popup_get_tour__content#popup_get_tour_content
-            .step.step1.active
-                h4.popup_get_tour__content_header Где Вы хотите отдохнуть? Выберите страну:
-                .field_set.step1
-                    select
-                        option Турция
-                        option Аргентина
-                        option Фиджи
-            .step.step2
-                h4.popup_get_tour__content_header Когда Вы хотите вылететь?
-                .field_set.step2
-                    .calendar
-                        .calendar__nav
-                            | 2015
-                        .calendar__datepicker
-                            #popup_get_tour_calendar
-            .step.step3
-                h4.popup_get_tour__content_header На сколько ночей?
-                .note Укажите продолжительность поездки
-                .field_set.step3
-                    .form_group
-                        .number_field
-                            .action_button.decrease —
-                            input.value(value=1, type="text")
-                            .action_button.increase +
-                    .form_group.radio_inline
-                        label
-                            input(type="radio", name="duration", value="nearly", checked="checked")
-                            | ± 2 ночи
-                        label
-                            input(type="radio", name="duration", value="exactly")
-                            | ровно
-            .step.step4
-                h4.popup_get_tour__content_header Сколько человек едет в тур?
-                .field_set.step4
-                    .form_group
-                        label Взрослых
-                        .number_field
-                            .action_button.decrease —
-                            input.value(value=1, type="text")
-                            .action_button.increase +
-                    .form_group.children
-                        label Детей
-                        .child_box#child_box
+                            .add_child_container#add_child_container
+                                select#addChild
+                                    option
+                                    option 1 год
+                                    option 2 года
+                                    option 3 года
+                .step.step5
+                    h4.popup_get_tour__content_header Расскажите о себе поподробнее!
+                    .field_set.step5
+                        .form_group.required
+                            label Ваше имя
+                            input(type="text")
+                            .error Обязательно для заполнения
+                        .form_group.required
+                            label Телефон
+                            input(type="text")
+                            .error Обязательно для заполнения
+                        .form_group.required
+                            label email
+                            input(type="text")
+                            .error Обязательно для заполнения
 
-                        .add_child_container#add_child_container
-                            select#addChild
-                                option
-                                option 1 год
-                                option 2 года
-                                option 3 года
-            .step.step5
-                h4.popup_get_tour__content_header Расскажите о себе поподробнее!
-                .field_set.step5
-                    .form_group.required
-                        label Ваше имя
-                        input(type="text")
-                        .error Обязательно для заполнения
-                    .form_group.required
-                        label Телефон
-                        input(type="text")
-                        .error Обязательно для заполнения
-                    .form_group.required
-                        label email
-                        input(type="text")
-                        .error Обязательно для заполнения
-
-        .popup_get_tour__buttons#popup_get_tour_buttons
-            .step.step1
-                button.next(type="button") Следующий шаг
-            .step.step2.active
-                button.prev(type="button") Выбор направления
-                button.next(type="button") Следующий шаг
-            .step.step3
-                button.prev(type="button") Выбор даты
-                button.next(type="button") Следующий шаг
-            .step.step4
-                button.prev(type="button") Продолжительность
-                button.next(type="button") Следующий шаг
-            .step.step5
-                button.prev(type="button") Кто едет
-                button.submit(type="submit") Отправить запрос
+            .popup_get_tour__buttons#popup_get_tour_buttons
+                .step.step1
+                    button.next(type="button") Следующий шаг
+                .step.step2.active
+                    button.prev(type="button") Выбор направления
+                    button.next(type="button") Следующий шаг
+                .step.step3
+                    button.prev(type="button") Выбор даты
+                    button.next(type="button") Следующий шаг
+                .step.step4
+                    button.prev(type="button") Продолжительность
+                    button.next(type="button") Следующий шаг
+                .step.step5
+                    button.prev(type="button") Кто едет
+                    button.submit(type="submit") Отправить запрос
 
 

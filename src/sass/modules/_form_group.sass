@@ -1,3 +1,6 @@
+$errorBgColor: #fbe6e4
+$errorBorderColor: #f8b6b1
+
 .form_group
   margin-bottom: 15px
   position: relative
@@ -5,12 +8,12 @@
     position: absolute
     top: 31px
     left: 103%
-    border: 1px solid #f8b6b1
+    border: 1px solid $errorBorderColor
     +border-radius($border-radius-sm)
     font-size: 14px
     line-height: 40px
     padding: 0 18px 0 10px
-    background: #fbe6e4
+    background: $errorBgColor
     color: #e54d42
     white-space: nowrap
     &:before, &:after
@@ -19,14 +22,27 @@
       +size(0)
     &:before
       border: 9px solid transparent
-      border-right-color: #f8b6b1
+      border-right-color: $errorBorderColor
       left: -18px
       top: 11px
     &:after
       border: 8px solid transparent
-      border-right-color: #fbe6e4
+      border-right-color: $errorBgColor
       left: -16px
       top: 12px
+    &.bottom
+      top: 60px
+      left: 0
+      &:before
+        top: -18px
+        left: 32px
+        border-right-color: transparent
+        border-bottom-color: $errorBorderColor
+      &:after
+        top: -16px
+        left: 33px
+        border-right-color: transparent
+        border-bottom-color: $errorBgColor
     visibility: hidden
     transition: all .5s ease
     opacity: 0
