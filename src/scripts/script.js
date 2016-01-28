@@ -8,7 +8,8 @@ $(function(){
         mainMenuHeight = $mainMenu.height(),
         mainMenuFixed = false,
         $excellenceBanner = $('#excellence__banner'),
-        sliderInterval = 4000
+        sliderInterval = 4000,
+        $datesSelectField = $(".dates_select_field")
     ;
 
 
@@ -159,37 +160,42 @@ $(function(){
         $popupGetTourButtons.find(".step:gt("+stepIndex+")").removeClass("active completed");
     }
 
-    function calendarInit($selector) {
+    function calendarInit($selector, $dateField) {
 
-        var $dateBeginField = $selector.find(".date_begin"),
-            $dateEndField = $selector.find(".date_end"),
-            defaultMinDate = new Date(),
+        var defaultMinDate = new Date(),
             currentYear = new Date().getFullYear(),
             selectedYear = currentYear,
             currentMonth = new Date().getMonth(),
             selectedMonth = currentMonth,
             $selectedYear = $selector.find(".selected_year"),
-            $monthButton = $selector.find(".month_nav").children()
+            $monthButton = $selector.find(".month_nav").children(),
+            dateBegin = "",
+            dateEnd = ""
             ;
+
+        if(!$dateField) $dateField = $selector.find(".date_field");
+
         $selectedYear.text(selectedYear);
 
         var $calendar = $selector.find(".calendar__datepicker_holder").datepicker({
             minDate: defaultMinDate,
 
             beforeShowDay: function(date) {
-                var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateBeginField.val());
-                var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateEndField.val());
+                var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateBegin);
+                var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateEnd);
                 return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? "dp-highlight" : ""];
             },
             onSelect: function(dateText, inst) {
-                var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateBeginField.val());
-                var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, $dateEndField.val());
+                var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateBegin);
+                var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateEnd);
                 if (!date1 || date2) {
-                    $dateBeginField.val(dateText);
-                    $dateEndField.val("");
+                    dateBegin = dateText;
+                    dateEnd = "";
+                    $dateField.val(dateBegin + " — ");
                     $(this).datepicker("option", "minDate", dateText);
                 } else {
-                    $dateEndField.val(dateText);
+                    dateEnd = dateText;
+                    $dateField.val(dateBegin + " — " + dateEnd);
                     $(this).datepicker("option", "minDate", defaultMinDate);
                 }
             }
@@ -327,9 +333,9 @@ $(function(){
         });
         obsessiveShown = true;
     });
-    calendarInit($(".calendar"));
+    calendarInit($(".order_form .calendar"), $datesSelectField);
 
-    $(".dates_select_field").on("focus", function(){
+    $datesSelectField.on("focus", function(){
         $(this).closest(".form_group").addClass("active");
     });
     $(".form_group.dates").on("click", function(e){
