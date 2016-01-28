@@ -198,7 +198,9 @@ $(function(){
                     currentYear = new Date().getFullYear(),
                     selectedYear = currentYear,
                     currentMonth = new Date().getMonth(),
-                    $selectedYear = $("#selected_year")
+                    selectedMonth = currentMonth,
+                    $selectedYear = $("#selected_year"),
+                    $monthButton = $("#month_nav > li")
                     ;
                 $selectedYear.text(selectedYear);
 
@@ -234,7 +236,16 @@ $(function(){
                             selectedYear--;
                     }
                     $selectedYear.text(selectedYear);
-                    $calendar.datepicker("setDate", new Date(selectedYear, currentMonth, 1));
+                    $calendar.datepicker("setDate", new Date(selectedYear, selectedMonth, 1));
+                });
+                function setActiveMonth(number) {
+                    $monthButton.removeClass("selected").eq(number).addClass("selected");
+                    selectedMonth = number;
+                    $calendar.datepicker("setDate", new Date(selectedYear, selectedMonth, 1));
+                }
+                setActiveMonth(selectedMonth);
+                $monthButton.click(function(){
+                    setActiveMonth($(this).index());
                 });
 
                 function addChild(d) {

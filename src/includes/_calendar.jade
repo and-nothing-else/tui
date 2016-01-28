@@ -1,0 +1,24 @@
+.calendar
+    input#date_begin(type="hidden")
+    input#date_end(type="hidden")
+    .calendar__nav
+        .calendar__nav_year
+            button.year_action.decrease
+            button.year_action.increase
+            .calendar__nav_year_value#selected_year
+        .calendar__nav_month
+            ul#month_nav
+                li Январь
+                li Февраль
+                li Март
+                li Апрель
+                li Май
+                li Июнь
+                li Июль
+                li Август
+                li Сентябрь
+                li Октябрь
+                li Ноябрь
+                li Декабрь
+    .calendar__datepicker
+        #popup_get_tour_calendar
