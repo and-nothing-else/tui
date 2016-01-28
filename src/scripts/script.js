@@ -24,7 +24,7 @@ $(function(){
         desktopClickDrag: true,
         //autoSlide: true,
         //autoSlideTimer: sliderInterval,
-        infiniteSlider: true,
+        infiniteSlider: true
         //navPrevSelector: "#excellence__banner__prev",
         //navNextSelector: "#excellence__banner__next"
     });
@@ -127,7 +127,7 @@ $(function(){
             type: 'ajax',
             padding: 0,
             width: 639,
-            closeBtn: false,
+            //closeBtn: false,
             wrapCSS: 'popup_obsessive',
             afterShow: function(){
                 _ajaxForm($("#popup_obsessive_form"), $(".popup_obsessive"));
@@ -163,7 +163,7 @@ $(function(){
             padding: 0,
             width: 879,
             height: 681,
-            closeBtn: false,
+            //closeBtn: false,
             fitToView: false,
             wrapCSS: 'popup_get_tour',
             afterShow: function(){
@@ -239,7 +239,8 @@ $(function(){
             type: 'ajax',
             padding: 0,
             width: 472,
-            closeBtn: false,
+            //closeBtn: false,
+            fitToView: false,
             wrapCSS: 'feedback_default',
             scrolling: 'visible',
             afterShow: function () {
@@ -255,7 +256,8 @@ $(function(){
             type: 'ajax',
             padding: 0,
             width: 472,
-            closeBtn: false,
+            //closeBtn: false,
+            fitToView: false,
             wrapCSS: 'order',
             scrolling: 'visible',
             afterShow: function () {
