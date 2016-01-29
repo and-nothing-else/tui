@@ -1,1 +1,424 @@
-!function e(t,i,a){function o(s,r){if(!i[s]){if(!t[s]){var c="function"==typeof require&&require;if(!r&&c)return c(s,!0);if(n)return n(s,!0);throw new Error("Cannot find module '"+s+"'")}var l=i[s]={exports:{}};t[s][0].call(l.exports,function(e){var i=t[s][1][e];return o(i?i:e)},l,l.exports,e,t,i,a)}return i[s].exports}for(var n="function"==typeof require&&require,s=0;s<a.length;s++)o(a[s]);return o}({1:[function(e,t,i){$(function(){function e(){k=setInterval(function(){g++,m.iosSlider("goToSlide",g%b)},h)}function t(){var e=$(window).scrollTop();e>=u?_||(p.addClass("fixed"),_=!0):_&&(p.removeClass("fixed"),_=!1)}function i(e){var t=$("#section_"+e),i=t.offset().top-v;$("html,body").animate({scrollTop:i,duration:3e3})}function a(e){var t=e.closest(".form_container");e.ajaxForm({beforeSubmit:function(i){var a=!0;return e.find(".required").each(function(){var e=$(this).find("input,select,textarea");e.val()||(a=!1,$(this).addClass("error"))}),a&&t.addClass("load"),a},success:function(e){t.removeClass("load").addClass("ok")}})}function o(){$.fancybox({href:"/popup_obsessive.html",type:"ajax",padding:0,width:639,wrapCSS:"popup_obsessive",afterShow:function(){a($("#popup_obsessive_form"))}}),d=!0}function n(e){var t=e-1,i=$("#popup_get_tour_steps"),a=$("#popup_get_tour_content"),o=$("#popup_get_tour_buttons");i.find(".step").removeClass("active"),i.find(".step:lt("+e+")").addClass("active"),a.find(".step:lt("+t+")").removeClass("active").addClass("completed"),a.find(".step:eq("+t+")").addClass("active").removeClass("completed"),a.find(".step:gt("+t+")").removeClass("active completed"),o.find(".step:lt("+t+")").removeClass("active").addClass("completed"),o.find(".step:eq("+t+")").addClass("active").removeClass("completed"),o.find(".step:gt("+t+")").removeClass("active completed")}function s(e,t,i){function a(e){d.removeClass("selected").eq(e).addClass("selected"),c=e,u.datepicker("setDate",new Date(s,c,1))}var o=new Date,n=(new Date).getFullYear(),s=n,r=(new Date).getMonth(),c=r,l=e.find(".selected_year"),d=e.find(".month_nav").children(),p="",f="";t||(t=e.find(".date_field")),l.text(s);var u=e.find(".calendar__datepicker_holder").datepicker({minDate:o,beforeShowDay:function(e){var t=$.datepicker.parseDate($.datepicker._defaults.dateFormat,p),i=$.datepicker.parseDate($.datepicker._defaults.dateFormat,f);return[!0,t&&(e.getTime()==t.getTime()||i&&e>=t&&i>=e)?"dp-highlight":""]},onSelect:function(e,a){var n=$.datepicker.parseDate($.datepicker._defaults.dateFormat,p),s=$.datepicker.parseDate($.datepicker._defaults.dateFormat,f);!n||s?(p=e,f="",t.val(p+" — "),$(this).datepicker("option","minDate",e)):(f=e,t.val(p+" — "+f),$(this).datepicker("option","minDate",o)),"function"==typeof i&&i(p,f)}});e.find(".year_action").on("click",function(){$(this).hasClass("increase")?s++:$(this).hasClass("decrease")&&s>n&&s--,l.text(s),u.datepicker("setDate",new Date(s,c,1))}),a(c),d.click(function(){a($(this).index())}),e.find(".calendar__nav_month_box").slimScroll({height:244,width:108,distance:10,alwaysVisible:!1})}function r(){$(".form_group.dates").removeClass("active")}var c,l=3e4,d=!1,p=$("#main_menu"),f=$(".section_link"),u=p.offset().top,v=p.height(),_=!1,m=$("#excellence__banner"),h=4e3,C=$(".dates_select_field");$("select").select2({minimumResultsForSearch:1/0}),$("input[type=checkbox], input[type=radio]").iCheck(),$(".order_form select").select2({minimumResultsForSearch:1/0,dropdownCssClass:"order_form_dropdown"}),m.iosSlider({snapToChildren:!0,desktopClickDrag:!0,infiniteSlider:!0});var k,b=m.find(".slide").size(),g=0;e(),$("#excellence__banner__prev").click(function(){clearInterval(k),g--,m.iosSlider("goToSlide",g%b),e()}),$("#excellence__banner__next").click(function(){clearInterval(k),g++,m.iosSlider("goToSlide",g%b),e()}),$(".tab_set").each(function(){var e=$(this),t=e.find(".tab_link"),i=e.find(".tab_pane");t.removeClass("active").first().addClass("active"),i.removeClass("active").first().addClass("active"),t.on("click",function(e){e.preventDefault();var a=$(this);a.hasClass("active")||(t.removeClass("active"),a.addClass("active"),i.removeClass("active").eq(a.index()).addClass("active"))})}),$(window).scroll(t),f.click(function(e){e.preventDefault(),i($(this).attr("href").replace("#",""))}),a($(".simple_order_form")),c=setTimeout(o,l),$("#get_tour").click(function(){$.fancybox({href:"/popup_get_tour.html",type:"ajax",padding:0,width:879,height:681,fitToView:!1,wrapCSS:"popup_get_tour",afterShow:function(){function e(e){var t=$("<div/>").addClass("child out").text(e),i=$("<button type='button'/>").addClass("close").html("&times;");return i.click(function(){t.addClass("out"),setTimeout(function(){t.detach(),c.removeClass("hidden")},300)}),t.append(i),r.append(t),setTimeout(function(){t.removeClass("out")},1),r.children().size()}var t=1,i=$("#popup_get_tour"),o=$("#popup_get_tour_steps"),r=$("#child_box"),c=$("#add_child_container");i.on("click",".next",function(){n(++t)}).on("click",".prev",function(){n(--t)}),o.on("click",".step",function(){t=$(this).index()+1,n(t)}),s(i.find(".calendar")),i.find("select").select2({minimumResultsForSearch:1/0}),i.find("input[type=checkbox], input[type=radio]").iCheck(),$("#addChild").select2({minimumResultsForSearch:1/0,placeholder:"Добавить ребёнка"}).on("select2:select",function(t){var i=e(t.target.value);$(this).val(null).trigger("change"),i>=3&&c.addClass("hidden")}),n(t),a(i)}}),d=!0}),$(".button_feedback").on("click",function(e){e.preventDefault(),$.fancybox({href:"/popup_feedback.html",type:"ajax",padding:0,width:472,fitToView:!1,wrapCSS:"feedback_default",scrolling:"visible",afterShow:function(){a($("#popup_feedback_form"))}}),d=!0}),$(".start_order").on("click",function(e){e.preventDefault(),$.fancybox({href:"/popup_order.html",type:"ajax",padding:0,width:472,fitToView:!1,wrapCSS:"order",scrolling:"visible",afterShow:function(){a($("#popup_feedback_form"))}}),d=!0}),s($(".order_form .calendar"),C,function(e,t){t&&r()}),$(".order_form .calendar_panel .close").click(function(){r()}),C.on("focus",function(){$(this).closest(".form_group").addClass("active")}),$(".form_group.dates").on("click",function(e){e.stopPropagation()}),$("#show_more_reviews").on("click",function(){$.get("/reviews.html").done(function(e){var t=$(e);t.addClass("out"),$(".review_lists").append(t),setTimeout(function(){t.removeClass("out")},10)})}),$("body").on("click",".fancybox_close",function(e){e.preventDefault(),$.fancybox.close()}).on("focus","input",function(){$(this).closest(".form_group").removeClass("error")}).on("click",function(){clearTimeout(c),d||(c=setTimeout(o,l)),r()}).on("click","#po_yes",function(){var e=$("#popup_obsessive");e.find(".step1").removeClass("active"),e.find(".popup_obsessive__step.step2").addClass("active yes")}).on("click","#po_no",function(){var e=$("#popup_obsessive");e.find(".step1").removeClass("active"),e.find(".popup_obsessive__step.step2").addClass("active no")}).on("click",".number_field .action_button",function(){var e=$(this).closest(".number_field"),t=e.find(".value"),i=parseInt(t.val());(isNaN(i)||1>i)&&(i=1),$(this).hasClass("increase")&&(i++,t.val(i)),$(this).hasClass("decrease")&&(i--,i>0&&t.val(i))}).on("change keyup",".number_field .value",function(){var e=parseInt($(this).val());(isNaN(e)||1>e)&&(e=1),$(this).val(e)})})},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+$(function(){
+    var visitTimer,
+        obsessiveTimeout = 30000,
+        obsessiveShown = false,
+        $mainMenu = $("#main_menu"),
+        $sectionLinks = $(".section_link"),
+        mainMenuDefaultPos = $mainMenu.offset().top,
+        mainMenuHeight = $mainMenu.height(),
+        mainMenuFixed = false,
+        $excellenceBanner = $('#excellence__banner'),
+        sliderInterval = 4000,
+        $datesSelectField = $(".dates_select_field")
+    ;
+
+
+    $("select").select2({
+        minimumResultsForSearch: Infinity
+    });
+    $("input[type=checkbox], input[type=radio]").iCheck();
+    $(".order_form select").select2({
+        minimumResultsForSearch: Infinity,
+        dropdownCssClass: 'order_form_dropdown'
+    });
+    $excellenceBanner.iosSlider({
+        snapToChildren: true,
+        desktopClickDrag: true,
+        //autoSlide: true,
+        //autoSlideTimer: sliderInterval,
+        infiniteSlider: true
+        //navPrevSelector: "#excellence__banner__prev",
+        //navNextSelector: "#excellence__banner__next"
+    });
+    var slidesCount = $excellenceBanner.find(".slide").size(),
+        currentSlide = 0,
+        autoSlide;
+    // да, это лютый трэшак, но в iosslider'е какой-то глюк.
+    function startAutoSlide() {
+        autoSlide = setInterval(function () {
+            currentSlide++;
+            $excellenceBanner.iosSlider("goToSlide", currentSlide % slidesCount);
+        }, sliderInterval);
+    }
+    startAutoSlide();
+    $("#excellence__banner__prev").click(function(){
+        clearInterval(autoSlide);
+        currentSlide--;
+        $excellenceBanner.iosSlider("goToSlide", currentSlide % slidesCount);
+        startAutoSlide();
+    });
+    $("#excellence__banner__next").click(function(){
+        clearInterval(autoSlide);
+        currentSlide++;
+        $excellenceBanner.iosSlider("goToSlide", currentSlide % slidesCount);
+        startAutoSlide();
+    });
+
+    $(".tab_set").each(function () {
+        var $tabSet = $(this),
+            $tabLinks = $tabSet.find(".tab_link"),
+            $tabPanes = $tabSet.find(".tab_pane");
+        $tabLinks.removeClass("active").first().addClass("active");
+        $tabPanes.removeClass("active").first().addClass("active");
+        $tabLinks.on('click', function(e){
+            e.preventDefault();
+            var $activeLink = $(this);
+            if(!$activeLink.hasClass("active")) {
+                $tabLinks.removeClass("active");
+                $activeLink.addClass("active");
+                $tabPanes.removeClass("active").eq($activeLink.index()).addClass("active");
+            }
+        });
+    });
+
+    function setMainMenuPosition() {
+        var scrollTop = $(window).scrollTop();
+        if(scrollTop >= mainMenuDefaultPos) {
+            if(!mainMenuFixed){
+                $mainMenu.addClass("fixed");
+                mainMenuFixed = true;
+            }
+        } else {
+            if(mainMenuFixed){
+                $mainMenu.removeClass("fixed");
+                mainMenuFixed = false;
+            }
+        }
+    }
+
+    function scroll2section(sectionID) {
+        var $section = $("#section_" + sectionID),
+            scrollPosition = $section.offset().top - mainMenuHeight;
+        $("html,body").animate({
+            scrollTop: scrollPosition,
+            duration: 3000
+        });
+    }
+
+    $(window).scroll(setMainMenuPosition);
+    $sectionLinks.click(function(e){
+        e.preventDefault();
+        scroll2section($(this).attr("href").replace("#", ""));
+    });
+
+    function _ajaxForm($form) {
+        var $block = $form.closest(".form_container");
+        $form.ajaxForm({
+            beforeSubmit: function(arr){
+                var validated = true;
+                $form.find(".required").each(function(){
+                    var $field = $(this).find("input,select,textarea");
+                    if(!$field.val()) {
+                        validated = false;
+                        $(this).addClass("error")
+                    }
+                });
+                if (validated) {
+                    $block.addClass("load");
+                }
+                return validated;
+            },
+            success: function(data){
+                $block.removeClass("load").addClass("ok")
+            }
+        });
+    }
+
+    _ajaxForm($(".simple_order_form"));
+
+    function showObsessivePopup() {
+        $.fancybox({
+            href: '/popup_obsessive.html',
+            type: 'ajax',
+            padding: 0,
+            width: 639,
+            //closeBtn: false,
+            wrapCSS: 'popup_obsessive',
+            afterShow: function(){
+                _ajaxForm($("#popup_obsessive_form"));
+            }
+        });
+        obsessiveShown = true;
+    }
+    visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
+
+    function getTourSetStep(stepNumber) {
+        var stepIndex = stepNumber - 1,
+            $popupGetTourSteps = $("#popup_get_tour_steps"),
+            $popupGetTourContent = $("#popup_get_tour_content"),
+            $popupGetTourButtons = $("#popup_get_tour_buttons")
+            ;
+
+        $popupGetTourSteps.find(".step").removeClass("active");
+        $popupGetTourSteps.find(".step:lt("+stepNumber+")").addClass("active");
+
+        $popupGetTourContent.find(".step:lt("+stepIndex+")").removeClass("active").addClass("completed");
+        $popupGetTourContent.find(".step:eq("+stepIndex+")").addClass("active").removeClass("completed");
+        $popupGetTourContent.find(".step:gt("+stepIndex+")").removeClass("active completed");
+
+        $popupGetTourButtons.find(".step:lt("+stepIndex+")").removeClass("active").addClass("completed");
+        $popupGetTourButtons.find(".step:eq("+stepIndex+")").addClass("active").removeClass("completed");
+        $popupGetTourButtons.find(".step:gt("+stepIndex+")").removeClass("active completed");
+    }
+
+    function calendarInit($selector, $dateField, callback) {
+
+        var defaultMinDate = new Date(),
+            currentYear = new Date().getFullYear(),
+            selectedYear = currentYear,
+            currentMonth = new Date().getMonth(),
+            selectedMonth = currentMonth,
+            $selectedYear = $selector.find(".selected_year"),
+            $monthButton = $selector.find(".month_nav").children(),
+            dateBegin = "",
+            dateEnd = ""
+            ;
+
+        if(!$dateField) $dateField = $selector.find(".date_field");
+
+        $selectedYear.text(selectedYear);
+
+        var $calendar = $selector.find(".calendar__datepicker_holder").datepicker({
+            minDate: defaultMinDate,
+
+            beforeShowDay: function(date) {
+                var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateBegin);
+                var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateEnd);
+                return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? "dp-highlight" : ""];
+            },
+            onSelect: function(dateText, inst) {
+                var date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateBegin);
+                var date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateEnd);
+                if (!date1 || date2) {
+                    dateBegin = dateText;
+                    dateEnd = "";
+                    $dateField.val(dateBegin + " — ");
+                    $(this).datepicker("option", "minDate", dateText);
+                } else {
+                    dateEnd = dateText;
+                    $dateField.val(dateBegin + " — " + dateEnd);
+                    $(this).datepicker("option", "minDate", defaultMinDate);
+                }
+                if(typeof callback == "function") {
+                    callback(dateBegin, dateEnd);
+                }
+            }
+        });
+        function setActiveMonth(number) {
+            $monthButton.removeClass("selected").eq(number).addClass("selected");
+            selectedMonth = number;
+            $calendar.datepicker("setDate", new Date(selectedYear, selectedMonth, 1));
+        }
+        $selector.find(".year_action").on("click", function(){
+            if($(this).hasClass("increase")) {
+                selectedYear++;
+            } else if($(this).hasClass("decrease")) {
+                if(selectedYear > currentYear)
+                    selectedYear--;
+            }
+            $selectedYear.text(selectedYear);
+            $calendar.datepicker("setDate", new Date(selectedYear, selectedMonth, 1));
+        });
+        setActiveMonth(selectedMonth);
+        $monthButton.click(function(){
+            setActiveMonth($(this).index());
+        });
+        $selector.find(".calendar__nav_month_box").slimScroll({
+            height: 244,
+            width: 108,
+            distance: 10,
+            alwaysVisible: false
+        });
+    }
+
+    $("#get_tour").click(function(){
+        $.fancybox({
+            href: '/popup_get_tour.html',
+            type: 'ajax',
+            padding: 0,
+            width: 879,
+            height: 681,
+            //closeBtn: false,
+            fitToView: false,
+            wrapCSS: 'popup_get_tour',
+            afterShow: function(){
+                var currentStep = 1,
+                    $popupGetTour = $("#popup_get_tour"),
+                    $steps = $("#popup_get_tour_steps"),
+                    $childBox = $("#child_box"),
+                    $addChildContainer = $("#add_child_container")
+                    ;
+                $popupGetTour
+                    .on("click", ".next", function(){
+                        getTourSetStep(++currentStep);
+                    })
+                    .on("click", ".prev", function(){
+                        getTourSetStep(--currentStep);
+                    });
+                $steps.on("click", ".step", function(){
+                    currentStep = $(this).index() + 1;
+                    getTourSetStep(currentStep);
+                });
+                calendarInit($popupGetTour.find(".calendar"));
+                $popupGetTour.find("select").select2({
+                    minimumResultsForSearch: Infinity
+                });
+                $popupGetTour.find("input[type=checkbox], input[type=radio]").iCheck();
+
+                function addChild(d) {
+                    var $ch = $("<div/>").addClass("child out").text(d),
+                        $close = $("<button type='button'/>").addClass("close").html("&times;");
+                    $close.click(function(){
+                        $ch.addClass("out");
+                        setTimeout(function(){
+                            $ch.detach();
+                            $addChildContainer.removeClass('hidden');
+                        }, 300);
+                    });
+                    $ch.append($close);
+                    $childBox.append($ch);
+                    setTimeout(function(){
+                        $ch.removeClass("out");
+                    }, 1);
+                    return $childBox.children().size();
+                }
+
+                $("#addChild")
+                    .select2({
+                        minimumResultsForSearch: Infinity,
+                        placeholder: "Добавить ребёнка"
+                    })
+                    .on("select2:select", function(e){
+                        var numChild = addChild(e.target.value);
+                        $(this).val(null).trigger('change');
+                        if(numChild >= 3) {
+                            $addChildContainer.addClass('hidden');
+                        }
+                    });
+
+                getTourSetStep(currentStep);
+                _ajaxForm($popupGetTour);
+            }
+        });
+        obsessiveShown = true;
+    });
+
+    $(".button_feedback").on("click", function(e){
+        e.preventDefault();
+        $.fancybox({
+            href: '/popup_feedback.html',
+            type: 'ajax',
+            padding: 0,
+            width: 472,
+            //closeBtn: false,
+            fitToView: false,
+            wrapCSS: 'feedback_default',
+            scrolling: 'visible',
+            afterShow: function () {
+                _ajaxForm($("#popup_feedback_form"))
+            }
+        });
+        obsessiveShown = true;
+    });
+    $('.start_order').on("click", function(e) {
+        e.preventDefault();
+        $.fancybox({
+            href: '/popup_order.html',
+            type: 'ajax',
+            padding: 0,
+            width: 472,
+            //closeBtn: false,
+            fitToView: false,
+            wrapCSS: 'order',
+            scrolling: 'visible',
+            afterShow: function () {
+                _ajaxForm($("#popup_feedback_form"))
+            }
+        });
+        obsessiveShown = true;
+    });
+    function closeCalendarPanel(){
+        $(".form_group.dates").removeClass("active");
+    }
+    calendarInit(
+        $(".order_form .calendar"),
+        $datesSelectField,
+        function(dateBegin, dateEnd){
+            if(dateEnd) {
+                closeCalendarPanel();
+            }
+        }
+    );
+    $(".order_form .calendar_panel .close").click(function(){
+        closeCalendarPanel();
+    });
+
+    $datesSelectField.on("focus", function(){
+        $(this).closest(".form_group").addClass("active");
+    });
+    $(".form_group.dates").on("click", function(e){
+        e.stopPropagation();
+    });
+
+    $("#show_more_reviews").on("click", function(){
+        $.get("/reviews.html").done(function(data){
+            var $data = $(data);
+            $data.addClass("out");
+            $(".review_lists").append($data);
+            setTimeout(function(){
+                $data.removeClass("out")
+            }, 10)
+        })
+    });
+
+
+    $("body")
+        .on("click", ".fancybox_close", function(e){
+            e.preventDefault();
+            $.fancybox.close();
+        })
+        .on("focus", "input", function(){
+            $(this).closest(".form_group").removeClass("error")
+        })
+        .on("click", function(){
+            clearTimeout(visitTimer);
+            if(!obsessiveShown)
+                visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
+            closeCalendarPanel();
+        })
+        .on("click", "#po_yes", function(){
+            var $popup = $("#popup_obsessive");
+            $popup.find(".step1").removeClass("active");
+            $popup.find(".popup_obsessive__step.step2").addClass("active yes");
+        })
+        .on("click", "#po_no", function(){
+            var $popup = $("#popup_obsessive");
+            $popup.find(".step1").removeClass("active");
+            $popup.find(".popup_obsessive__step.step2").addClass("active no");
+        })
+        .on("click", ".number_field .action_button", function(){
+            var $numberField = $(this).closest(".number_field"),
+                $input = $numberField.find(".value"),
+                value = parseInt($input.val());
+            if(isNaN(value) || value < 1) value = 1;
+            if($(this).hasClass("increase")){
+                value++;
+                $input.val(value);
+            }
+            if($(this).hasClass("decrease")){
+                value--;
+                if(value > 0) $input.val(value);
+            }
+        })
+        .on("change keyup", ".number_field .value", function(){
+            var value = parseInt($(this).val());
+            if(isNaN(value) || value < 1) value = 1;
+            $(this).val(value);
+        })
+
+    ;
+
+});
+
+},{}]},{},[1])
