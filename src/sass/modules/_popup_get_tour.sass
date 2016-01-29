@@ -133,15 +133,15 @@
       text-align: center
     .note
       text-align: center
+    label
+      display: block
+      font:
+        size: 18px
+        weight: bold
+      text-align: center
     .field_set
       width: 264px
       @extend .center-block
-      label
-        display: block
-        font:
-          size: 18px
-          weight: bold
-        text-align: center
       input[type=text], select, .select2-selection--single
         padding: $input-padding-y-lg 11px
       &.step1
@@ -155,15 +155,6 @@
         padding-top: 10px
       &.step5
         padding-top: 10px
-      .radio_inline
-        text-align: center
-        label
-          display: inline
-          font:
-            weight: normal
-            size: 14px
-          + label
-            margin-left: 22px
 
       .children
         transform-origin: center top

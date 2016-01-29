@@ -16,6 +16,7 @@ $(function(){
     $("select").select2({
         minimumResultsForSearch: Infinity
     });
+    $("input[type=checkbox], input[type=radio]").iCheck();
     $(".order_form select").select2({
         minimumResultsForSearch: Infinity,
         dropdownCssClass: 'order_form_dropdown'

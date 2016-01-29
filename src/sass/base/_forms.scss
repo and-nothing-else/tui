@@ -31,3 +31,18 @@ select {
     }
   }
 }
+
+
+.form_group.radio_inline {
+  text-align: center;
+  label {
+    display: inline;
+    font: {
+      weight: normal;
+      size: 14px;
+    }
+    + label {
+      margin-left: 22px;
+    }
+  }
+}
