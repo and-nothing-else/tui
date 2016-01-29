@@ -86,7 +86,9 @@ gulp.task('copy', () => {
 
 gulp.task('jade', () => {
     gulp.src(files.source.templates)
-        .pipe(jade())
+        .pipe(jade({
+            pretty: true
+        }))
         .pipe(gulp.dest(dirs.dest))
         .pipe(production ? gutil.noop() : livereload());
 });
