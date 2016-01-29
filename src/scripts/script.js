@@ -160,7 +160,7 @@ $(function(){
         $popupGetTourButtons.find(".step:gt("+stepIndex+")").removeClass("active completed");
     }
 
-    function calendarInit($selector, $dateField) {
+    function calendarInit($selector, $dateField, callback) {
 
         var defaultMinDate = new Date(),
             currentYear = new Date().getFullYear(),
@@ -197,6 +197,9 @@ $(function(){
                     dateEnd = dateText;
                     $dateField.val(dateBegin + " — " + dateEnd);
                     $(this).datepicker("option", "minDate", defaultMinDate);
+                }
+                if(typeof callback == "function") {
+                    callback(dateBegin, dateEnd);
                 }
             }
         });
@@ -333,9 +336,20 @@ $(function(){
         });
         obsessiveShown = true;
     });
-    calendarInit($(".order_form .calendar"), $datesSelectField);
-    $(".order_form .calendar_panel .close").click(function(){
+    function closeCalendarPanel(){
         $(".form_group.dates").removeClass("active");
+    }
+    calendarInit(
+        $(".order_form .calendar"),
+        $datesSelectField,
+        function(dateBegin, dateEnd){
+            if(dateEnd) {
+                closeCalendarPanel();
+            }
+        }
+    );
+    $(".order_form .calendar_panel .close").click(function(){
+        closeCalendarPanel();
     });
 
     $datesSelectField.on("focus", function(){
@@ -358,7 +372,7 @@ $(function(){
             clearTimeout(visitTimer);
             if(!obsessiveShown)
                 visitTimer = setTimeout(showObsessivePopup, obsessiveTimeout);
-            $(".form_group.dates").removeClass("active");
+            closeCalendarPanel();
         })
         .on("click", "#po_yes", function(){
             var $popup = $("#popup_obsessive");
