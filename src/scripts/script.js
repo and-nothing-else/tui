@@ -359,6 +359,17 @@ $(function(){
         e.stopPropagation();
     });
 
+    $("#show_more_reviews").on("click", function(){
+        $.get("/reviews.html").done(function(data){
+            var $data = $(data);
+            $data.addClass("out");
+            $(".review_lists").append($data);
+            setTimeout(function(){
+                $data.removeClass("out")
+            }, 10)
+        })
+    });
+
 
     $("body")
         .on("click", ".fancybox_close", function(e){

@@ -20,7 +20,18 @@
 
   &_list
     +list-unstyled()
-    margin-bottom: 20px
+
+    &s
+      transform-origin: center
+      perspective: 600px
+      margin-bottom: 20px
+
+    transform: rotateX(0deg) scale(1)
+    +transition(all .3s ease)
+    opacity: 1
+    &.out
+      transform: rotateX(-30deg) scale(.8)
+      opacity: 0
 
     &__item
       +clearfix()
